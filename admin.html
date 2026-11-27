@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel de leads</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#fff,#0b0b0b);--ink:light-dark(#0b0b0b,#f3f3f3);--soft:light-dark(#5a5a5a,#a9a9a9);--line:light-dark(#e4e4e4,#262626);--card:light-dark(#f6f6f6,#151515);--acc:#ff6a3d}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Instrument Sans",system-ui,sans-serif}
+h1,h2{font-family:Archivo,sans-serif;font-stretch:118%;font-weight:800;margin:0;line-height:1.05}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:16px max(4vw,16px);border-bottom:1px solid var(--line)}
+header h1{font-size:22px}header .sp{margin-left:auto}
+main{padding:24px max(4vw,16px);max-width:1240px;margin:0 auto}
+button,input,select,textarea{font:inherit;color:inherit}
+input,select,textarea{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px;min-height:44px;font-size:16px}
+button{min-height:44px;padding:0 18px;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:var(--bg);font-weight:600;cursor:pointer}
+button.ghost{background:transparent;color:var(--ink)}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+#login{max-width:380px;margin:12vh auto;display:grid;gap:12px}
+#login p{color:var(--soft)}
+.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin-bottom:20px}
+.stat{background:var(--card);border-radius:14px;padding:14px;cursor:pointer;border:2px solid transparent;text-align:left;color:var(--ink);font-weight:400;min-height:0}
+.stat.on{border-color:var(--acc)}.stat b{display:block;font:800 28px/1 Archivo,sans-serif}
+.bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}.bar input{flex:1 1 220px}
+.list{display:grid;gap:12px}
+.lead{background:var(--card);border-radius:16px;padding:18px;display:grid;gap:10px}
+.top{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline}
+.top h2{font-size:18px}.top time{color:var(--soft);font-size:13px;margin-left:auto}
+.meta{display:flex;flex-wrap:wrap;gap:6px}.meta span{border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:13px}
+.msg{color:var(--soft);white-space:pre-wrap}
+.act{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.act a{color:inherit;font-weight:600}
+textarea{width:100%;min-height:64px;resize:vertical}
+.empty,#err{color:var(--soft);padding:24px 0}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<section id="login">
+  <h1>Painel de leads</h1>
+  <p>Digite seu e-mail para receber um link de acesso. Se já definiu uma senha, pode usá-la.</p>
+  <input id="le" type="email" autocomplete="username" placeholder="E-mail">
+  <input id="lp" type="password" autocomplete="current-password" placeholder="Senha">
+  <button id="lk">Receber link por e-mail</button>
+  <button id="lb" class="ghost">Entrar com senha</button>
+  <p id="lm" role="status"></p>
+</section>
+
+<div id="app" class="hidden">
+  <header><h1>Leads</h1><span class="sp"></span><button class="ghost" id="exp">Exportar CSV</button><button class="ghost" id="out">Sair</button></header>
+  <main>
+    <div class="stats" id="stats"></div>
+    <div class="bar"><input id="q" type="search" placeholder="Buscar por nome, negócio, WhatsApp"></div>
+    <div class="list" id="list"></div>
+    <p id="err" role="status"></p>
+  </main>
+</div>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.58.0/dist/umd/supabase.js"></script>
+<script>
+{
+const ST = { novo:"Novo", em_contato:"Em contato", proposta:"Proposta enviada", fechado:"Fechado", perdido:"Perdido" };
+const esc = x => String(x ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const $ = id => document.getElementById(id);
+const c = window.SITE_CONFIG || {};
+let leads = [], filter = "todos";
+
+if (!c.supabaseUrl || !c.supabaseAnonKey) { $("lm").textContent = "Preencha o config.js com a URL e a chave anon do Supabase."; }
+const sb = (c.supabaseUrl && window.supabase) ? window.supabase.createClient(c.supabaseUrl, c.supabaseAnonKey) : null;
+
+async function start() {
+  if (!sb) return;
+  const { data } = await sb.auth.getSession();
+  if (data.session) show(); 
+}
+$("lb").addEventListener("click", async () => {
+  if (!sb) return;
+  $("lm").textContent = "Entrando...";
+  const { error } = await sb.auth.signInWithPassword({ email: $("le").value.trim(), password: $("lp").value });
+  if (error) { $("lm").textContent = "Não foi possível entrar. Confira e-mail e senha."; return; }
+  $("lm").textContent = ""; show();
+});
+$("lk").addEventListener("click", async () => {
+  if (!sb) return;
+  const email = $("le").value.trim(); if (!email) { $("lm").textContent = "Digite seu e-mail."; return; }
+  $("lm").textContent = "Enviando...";
+  const { error } = await sb.auth.signInWithOtp({ email, options:{ shouldCreateUser:false, emailRedirectTo: location.origin + location.pathname } });
+  $("lm").textContent = error ? "Não foi possível enviar o link. Confira o e-mail." : "Link enviado. Abra seu e-mail neste aparelho e clique no link.";
+});
+sb && sb.auth.onAuthStateChange((ev, session) => { if (session && $("app").classList.contains("hidden")) show(); });
+$("lp").addEventListener("keydown", e => { if (e.key === "Enter") $("lb").click(); });
+$("out").addEventListener("click", async () => { await sb.auth.signOut(); location.reload(); });
+
+async function show() {
+  $("login").classList.add("hidden"); $("app").classList.remove("hidden");
+  const { data, error } = await sb.from("leads").select("*").order("criado_em", { ascending:false }).limit(1000);
+  if (error) { $("err").textContent = "Erro ao carregar leads: " + error.message; return; }
+  leads = data || []; render();
+}
+
+function render() {
+  const counts = { todos: leads.length };
+  for (const k in ST) counts[k] = leads.filter(l => l.status === k).length;
+  $("stats").innerHTML = [["todos","Todos"], ...Object.entries(ST)].map(([k,n]) =>
+    `<button class="stat${filter===k?" on":""}" data-f="${k}"><b>${counts[k]}</b>${n}</button>`).join("");
+  const q = $("q").value.trim().toLowerCase();
+  const rows = leads.filter(l => (filter === "todos" || l.status === filter) &&
+    (!q || [l.nome,l.negocio,l.whatsapp,l.email].join(" ").toLowerCase().includes(q)));
+  $("list").innerHTML = rows.length ? rows.map(l => {
+    const tel = String(l.whatsapp||"").replace(/\D/g,""); const wa = "https://wa.me/" + (tel.length <= 11 ? "55"+tel : tel);
+    return `<article class="lead" data-id="${esc(l.id)}">
+      <div class="top"><h2>${esc(l.nome)}</h2><a href="${esc(wa)}" target="_blank" rel="noopener">${esc(l.whatsapp)}</a>${l.email?`<span>${esc(l.email)}</span>`:""}<time>${esc(new Date(l.criado_em).toLocaleString("pt-BR"))}</time></div>
+      <div class="meta">${[l.negocio,l.tipo,l.investimento,l.prazo].filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join("")}</div>
+      ${l.mensagem?`<p class="msg">${esc(l.mensagem)}</p>`:""}
+      <div class="act"><select data-s>${Object.entries(ST).map(([k,n])=>`<option value="${k}"${l.status===k?" selected":""}>${n}</option>`).join("")}</select>
+      <a href="${esc(wa)}" target="_blank" rel="noopener">Chamar no WhatsApp</a></div>
+      <textarea data-n placeholder="Anotações">${esc(l.anotacoes)}</textarea>
+    </article>`; }).join("") : `<p class="empty">Nenhum lead aqui ainda.</p>`;
+}
+
+$("stats").addEventListener("click", e => { const b = e.target.closest("[data-f]"); if (b) { filter = b.dataset.f; render(); } });
+$("q").addEventListener("input", render);
+async function save(id, patch) {
+  const { error } = await sb.from("leads").update(patch).eq("id", id);
+  $("err").textContent = error ? "Erro ao salvar: " + error.message : "";
+  if (!error) Object.assign(leads.find(l => l.id === id), patch);
+}
+$("list").addEventListener("change", e => {
+  const card = e.target.closest(".lead"); if (!card) return;
+  if (e.target.matches("[data-s]")) save(card.dataset.id, { status: e.target.value }).then(render);
+  if (e.target.matches("[data-n]")) save(card.dataset.id, { anotacoes: e.target.value.slice(0,4000) || null });
+});
+$("exp").addEventListener("click", () => {
+  const cols = ["criado_em","nome","whatsapp","email","negocio","tipo","investimento","prazo","status","mensagem","anotacoes"];
+  const csv = [cols.join(";"), ...leads.map(l => cols.map(k => '"' + String(l[k] ?? "").replace(/"/g,'""') + '"').join(";"))].join("\n");
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿"+csv], {type:"text/csv"})); a.download = "leads.csv"; a.click();
+});
+start();
+}
+</script>
+</body>
+</html>
