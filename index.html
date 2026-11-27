@@ -207,7 +207,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;
     <label>Seu nome<input id="fn" autocomplete="name" required></label>
     <div class="two"><label>WhatsApp<input id="fp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" required></label><label>E-mail<input id="fe" type="email" autocomplete="email" placeholder="opcional"></label></div>
     <label>Tipo de negócio<input id="fb" placeholder="Ex.: salão de beleza, loja, consultório"></label>
-    <label>O que você precisa<select id="ft"><option>Site institucional</option><option>Landing page</option><option>Loja virtual</option><option>Sistema ou programa</option><option>Ainda não sei</option></select></label>
+    <label>O que você precisa<select id="ft"><option>Site institucional</option><option>Landing page</option><option>Sistema ou programa</option><option>Ainda não sei</option></select></label>
     <div class="two"><label>Investimento previsto<select id="fv"><option>Ainda não sei</option><option>Até R$ 1.000</option><option>R$ 1.000 a R$ 3.000</option><option>R$ 3.000 a R$ 6.000</option><option>Acima de R$ 6.000</option></select></label><label>Para quando<select id="fd"><option>Sem pressa</option><option>Este mês</option><option>Nas próximas semanas</option><option>Urgente</option></select></label></div>
     <label>Mensagem<textarea id="fm" placeholder="Conte sua ideia"></textarea></label>
     <input id="fh" name="empresa_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
@@ -239,7 +239,6 @@ const I = {
 const srv = [
   ["site","Site institucional","Apresente sua empresa, serviços e contatos com uma página profissional que passa confiança."],
   ["page","Landing page","Uma página focada em um produto ou campanha, feita para transformar visitas em contatos."],
-  ["shop","Loja virtual","Venda pela internet com catálogo, carrinho e pagamento online."],
   ["seo","Google e SEO básico","Seu site preparado para aparecer nas buscas e no Google Maps."],
   ["fix","Manutenção","Atualizações de conteúdo, ajustes e segurança depois que o site está no ar."],
   ["code","Sistemas e programas","Ferramentas sob medida para organizar e automatizar o seu negócio.",true]
@@ -261,8 +260,7 @@ document.getElementById("prt").innerHTML = [["Sistema Financeiro Hospitalar","Co
 
 const prc = [
   ["Essencial","Sob consulta","Para quem precisa marcar presença rápido.",["Landing page de uma página","Botão de WhatsApp","Adaptado para celular","Entrega rápida"]],
-  ["Profissional","Sob consulta","O mais pedido por pequenas empresas.",["Site com até 5 páginas","Formulário de contato","Google e SEO básico","Integração com redes sociais","30 dias de suporte"],true],
-  ["Loja virtual","Sob consulta","Para vender seus produtos online.",["Catálogo de produtos","Carrinho e pagamento online","Painel para gerenciar pedidos","Treinamento de uso"]]
+  ["Profissional","Sob consulta","O mais pedido por pequenas empresas.",["Site com até 5 páginas","Formulário de contato","Google e SEO básico","Integração com redes sociais","30 dias de suporte"],true]
 ];
 document.getElementById("prc").innerHTML = prc.map(([n,p,f,l,top]) =>
   `<article class="plan${top?' top':''}"><h3>${n}</h3><div class="price">${p}</div><p class="for">${f}</p><ul>${l.map(x=>`<li>${x}</li>`).join("")}</ul><a class="btn${top?'':' solid'}" href="#contato" data-plan="${n}">Quero este</a></article>`).join("");
@@ -271,7 +269,7 @@ document.getElementById("dep").innerHTML = [1,2,3].map(n =>
   `<article class="quote"><p>Depoimento do cliente ${n} entra aqui.</p><div class="who"><div class="av"></div><div><b>Nome do cliente</b><br><small>Empresa</small></div></div></article>`).join("");
 
 const faq = [
-  ["Quanto tempo leva para o site ficar pronto?","Depende do tamanho do projeto. Uma landing page costuma levar poucos dias; sites maiores e lojas levam mais. O prazo exato vai na proposta."],
+  ["Quanto tempo leva para o site ficar pronto?","Depende do tamanho do projeto. Uma landing page costuma levar poucos dias; sites maiores e sistemas levam mais. O prazo exato vai na proposta."],
   ["Preciso entender de tecnologia?","Não. Eu cuido de toda a parte técnica, do domínio à publicação, e explico o que for preciso."],
   ["Posso atualizar o site depois?","Sim. Você pode pedir ajustes pelo plano de manutenção ou aprender a editar os textos sozinho."],
   ["Como funciona o pagamento?","As condições são combinadas na proposta, com opção de parcelamento."]
