@@ -100,7 +100,7 @@ a.pill{text-decoration:none;transition:border-color .2s}a.pill:hover{border-colo
 .dot.on::before{width:30px;background:#111}
 .dot:focus-visible{outline:3px solid #111;outline-offset:-6px;border-radius:12px}
 .stage{flex-direction:column}
-.note{grid-column:7/13;margin-top:-28px;font-size:13px;color:#6B6B6B}
+.note{grid-column:7/13;margin-top:-28px;font-size:14px;color:var(--ink2)}
 
 /* faixa de fatos */
 .facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -266,7 +266,8 @@ footer .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:12px 32px;font-s
 footer a{text-decoration:none;color:var(--ink);min-height:44px;display:inline-flex;align-items:center}footer a:hover{color:var(--or-t)}
 footer .r{margin-left:auto}
 
-.fab{position:fixed;right:18px;bottom:18px;z-index:50;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(17,17,17,.25);transition:transform .2s}
+.fab{position:fixed;right:18px;bottom:18px;z-index:50;width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(17,17,17,.25);transition:transform .25s,opacity .25s}
+.fab.away{opacity:0;transform:scale(.6);pointer-events:none;visibility:hidden}
 .fab:hover{transform:scale(1.06)}.fab svg{width:30px;height:30px}
 
 @media (prefers-reduced-motion:no-preference){
@@ -579,7 +580,7 @@ footer .r{margin-left:auto}
   <span class="r">© 2026 Soft Solution</span>
 </div></footer>
 
-<a class="fab" href="https://wa.me/5532998282452?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
+<a class="fab away" href="https://wa.me/5532998282452?text=Ol%C3%A1!%20Vi%20seu%20site%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg aria-hidden="true"><use href="#wa"/></svg></a>
 
 <script src="assets/tema.js" defer></script>
 <script src="config.js"></script>
@@ -726,6 +727,11 @@ document.querySelectorAll(".ask a[data-fmt]").forEach(a=>a.addEventListener("cli
   const sel=document.getElementById("ft"); if(sel){[...sel.options].forEach(o=>{if((o.value||o.text)===a.dataset.fmt)sel.value=o.value||o.text});}
   setTimeout(()=>{const n=document.getElementById("fn"); if(n) n.focus({preventScroll:true});},600);
 }));
+
+/* botão flutuante do WhatsApp: some no topo (que já tem o botão) e aparece ao rolar */
+(function(){const fab=document.querySelector(".fab"),hero=document.querySelector(".hero");
+  if(!fab||!hero||!("IntersectionObserver" in window)){fab&&fab.classList.remove("away");return;}
+  new IntersectionObserver(([e])=>fab.classList.toggle("away",e.isIntersecting),{threshold:.25}).observe(hero);})();
 </script>
 </body>
 </html>
