@@ -70,7 +70,7 @@ form .btn .trace{inset:-10px 0;background-size:0 0}
 nav{position:sticky;top:0;z-index:20;background:#060a1ccc;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff10}
 nav .wrap{display:flex;align-items:center;gap:20px;min-height:72px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand img{height:48px;width:auto;display:block;filter:drop-shadow(0 0 10px #2f8bff55)}
+.brand picture{display:block;flex:none}.brand img{height:48px;width:auto;display:block}
 .brand b{display:block;font-size:19px}
 .brand small{display:block;font-size:9.5px;letter-spacing:.22em;color:var(--soft);margin-top:2px}
 .links{display:flex;gap:4px 26px;margin-left:auto;font-size:14.5px;flex-wrap:wrap}
@@ -237,7 +237,7 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
 </defs></svg>
 
 <nav><div class="wrap">
-  <a class="brand" href="#topo" aria-label="Soft Solution Technology, início"><img src="assets/sst-3d.png" width="79" height="48" alt=""><span><b>Soft Solution</b><small>TECHNOLOGY</small></span></a>
+  <a class="brand" href="#topo" aria-label="Soft Solution Technology, início"><picture><source srcset="assets/sst-3d-animado.webp" type="image/webp" media="(prefers-reduced-motion: no-preference)"><img src="assets/sst-3d.png" width="75" height="48" alt=""></picture><span><b>Soft Solution</b><small>TECHNOLOGY</small></span></a>
   <div class="links" id="links"><a href="#topo" class="on">Home</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#planos">Planos</a><a href="#contato">Contato</a></div>
   <a class="btn pri sm" href="#contato"><span class="bi"><svg><use href="#rocket"/></svg></span><span class="bl">Solicitar orçamento</span></a>
 </div></nav>
@@ -408,9 +408,9 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
 
 <footer><div class="wrap">
   <div class="row">
-    <a class="brand" href="#topo" aria-label="Soft Solution Technology"><img src="assets/sst-3d.png" width="79" height="48" alt=""><span><b>Soft Solution</b><small>TECHNOLOGY</small></span></a>
+    <a class="brand" href="#topo" aria-label="Soft Solution Technology"><picture><source srcset="assets/sst-3d-animado.webp" type="image/webp" media="(prefers-reduced-motion: no-preference)"><img src="assets/sst-3d.png" width="75" height="48" alt=""></picture><span><b>Soft Solution</b><small>TECHNOLOGY</small></span></a>
     <div class="fl"><a href="#topo">Home</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#planos">Planos</a><a href="#contato">Contato</a></div>
-    <div class="fc"><a href="mailto:marceloalvesjf@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="#4f8bff" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>marceloalvesjf@gmail.com</a></div>
+    <div class="fc"><a href="mailto:softsolutionia@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="#4f8bff" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>softsolutionia@gmail.com</a></div>
     <div class="soc">
       <a href="https://www.instagram.com/alvesmm__/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
     </div>
@@ -497,6 +497,18 @@ const navLinks = [...document.querySelectorAll("#links a")];
 const spy = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) navLinks.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id)); }), {rootMargin:"-45% 0px -50% 0px"});
 ["topo","servicos","planos","sobre","contato"].forEach(id => spy.observe($(id)));
 
+// Envia o lead por e-mail (FormSubmit) para a caixa da empresa.
+const LEAD_EMAIL = "softsolutionia@gmail.com";
+function mailLead(lead) {
+  if ($("fh").value) return Promise.resolve(true);
+  const body = { _subject: "Novo pedido de orçamento: " + lead.nome, _template: "table", _captcha: "false",
+    Nome: lead.nome, WhatsApp: lead.whatsapp, "E-mail": lead.email || "-", Negócio: lead.negocio || "-",
+    Precisa: lead.tipo, Investimento: lead.investimento, Prazo: lead.prazo, Mensagem: lead.mensagem || "-" };
+  if (lead.email) body._replyto = lead.email;
+  return fetch("https://formsubmit.co/ajax/" + LEAD_EMAIL, { method:"POST", headers:{ "Content-Type":"application/json", Accept:"application/json" }, body: JSON.stringify(body) })
+    .then(r => r.ok).catch(() => false);
+}
+
 // Salva o lead no Supabase (config.js).
 function saveLead(lead) {
   const c = window.SITE_CONFIG || {};
@@ -519,10 +531,10 @@ $("f").addEventListener("submit", e => {
   const lead = { nome:v("fn",120), whatsapp:v("fp",25), email:v("fe"), negocio:v("fb"), tipo:v("ft"), investimento:v("fv"), prazo:v("fd"), mensagem:v("fm",2000), origem:"site" };
   const btn = $("f").querySelector("button[type=submit]");
   btn.disabled = true; ok.textContent = "Enviando seu pedido...";
-  saveLead(lead).then(sent => {
+  Promise.all([saveLead(lead), mailLead(lead)]).then(([saved, mailed]) => { const sent = saved || mailed;
     btn.disabled = false;
     if (sent) { $("f").reset(); ok.textContent = "Pedido enviado! Obrigado, " + lead.nome.split(" ")[0] + ". Vou analisar e entro em contato em breve."; }
-    else ok.textContent = "Não consegui enviar agora. Tente de novo em instantes ou mande um e-mail para marceloalvesjf@gmail.com.";
+    else ok.textContent = "Não consegui enviar agora. Tente de novo em instantes ou mande um e-mail para softsolutionia@gmail.com.";
   });
 });
 }
