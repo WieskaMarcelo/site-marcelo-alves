@@ -3,291 +3,479 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sites sob medida</title>
+<title>Marcelo Alves | Soluções Digitais</title>
+<meta name="description" content="Desenvolvimento de sites, sistemas e automações para pequenas empresas. Juiz de Fora (MG) e todo o Brasil, online.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Instrument+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* VOICE: direto, confiante, de quem entrega trabalho pronto
-   IDEA: a página se comporta como uma janela de navegador com um site sendo montado
-   PICTURE: navegador grande com um site em construção, blocos encaixando
-   COLOUR and TYPE: preto e branco + campo laranja #ff6a3d; Archivo expandido 800 + Instrument Sans
-   LAYOUT: hero com metade em campo laranja; bandas cheias; contato em faixa preta */
-:root{color-scheme:light dark;--bg:light-dark(#fff,#0b0b0b);--ink:light-dark(#0b0b0b,#f3f3f3);--soft:light-dark(#5a5a5a,#a9a9a9);--line:light-dark(#e4e4e4,#262626);--mint:#ff6a3d;--mintink:#ff6a3d;--card:light-dark(#f6f6f6,#151515)}
-:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+/* VOICE: tecnológico, confiante, premium; noite de estúdio digital
+   IDEA: a página é uma vitrine noturna de telas acesas, com linhas de luz neon
+   PICTURE: notebook + celular em perspectiva, tela com montanha ao luar, ondas de luz azul/roxa
+   COLOUR and TYPE: azul-marinho #060a1c, azul elétrico #2f6bff, violeta #7b3bff; Sora + Manrope
+   LAYOUT: hero dividido, cards de serviço em 4 colunas, carrossel de portfólio, faixa CTA em degradê */
+:root{color-scheme:dark;--bg:#060a1c;--bg2:#0a1030;--card:#0d1434;--line:#1c2654;--ink:#eef2ff;--soft:#a3acd1;--blue:#2f6bff;--blue2:#4f8bff;--vio:#7b3bff;--grad:linear-gradient(90deg,#2f6bff,#7b3bff)}
 *{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Instrument Sans",system-ui,sans-serif;overflow-x:clip}
-h1,h2,h3,.logo{font-family:Archivo,system-ui,sans-serif;font-stretch:118%;letter-spacing:-.01em;font-weight:800;line-height:1.05;text-wrap:balance;margin:0}
-h1{font-size:clamp(36px,5.4vw,60px)}h2{font-size:clamp(30px,3.6vw,44px)}h3{font-size:20px;line-height:1.2}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip}
+h1,h2,h3,.brand b{font-family:Sora,system-ui,sans-serif;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h1{font-size:clamp(38px,5.2vw,62px);font-weight:800}
+h2{font-size:clamp(28px,3.4vw,40px);font-weight:700}
+h3{font-size:18px;font-weight:700}
 p{margin:0}a{color:inherit}
-.band{padding:clamp(48px,6vw,96px) max(5vw,16px)}
-.wrap{max-width:1240px;margin:0 auto}
-.lead{font-size:17px;color:var(--soft);max-width:60ch;margin-top:16px}
-.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--ink);transition:transform .15s}
-.btn:hover{transform:translateY(-2px)}.btn:focus-visible{outline:3px solid #d9461b;outline-offset:3px}
-.btn.solid{background:var(--ink);color:var(--bg)}
-.btn.wa{background:#25d366;border-color:#25d366;color:#062b14}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
+.band{padding:clamp(56px,7vw,100px) 0;position:relative}
+.hl{background:linear-gradient(90deg,#3d7bff,#8a5bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kicker{display:flex;align-items:center;gap:12px;color:var(--blue2);font-weight:700;font-size:14px;margin-bottom:12px}
+.kicker::after{content:"";width:44px;height:1.5px;background:var(--blue)}
+.muted{color:var(--soft)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .2s;font-family:inherit}
+.btn svg{width:18px;height:18px;flex:none}
+.btn:hover{transform:translateY(-2px)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #8fb0ff;outline-offset:3px}
+.btn.pri{background:var(--blue);color:#fff;box-shadow:0 10px 30px -10px #2f6bffaa}
+.btn.pri:hover{box-shadow:0 14px 36px -8px #2f6bffcc}
+.btn.out{border-color:#c9d3ff55;color:var(--ink);background:transparent}
+.btn.out:hover{border-color:var(--blue2)}
+.btn.white{background:#fff;color:#0a1030}
+.btn.wa{background:#25d366;color:#05290f}
 /* nav */
-nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:12px max(5vw,16px)}
-.logo{font-size:22px;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:10px}
-.logo i{width:28px;height:28px;border-radius:8px;background:var(--mint);display:block;box-shadow:inset -6px -6px 0 #0b0b0b22}
-.links{display:flex;gap:4px 18px;flex-wrap:wrap;margin-left:auto;font-size:15px}
-.links a{text-decoration:none;padding:8px 2px;color:var(--soft)}.links a:hover{color:var(--ink)}
+nav{position:sticky;top:0;z-index:20;background:#060a1ccc;backdrop-filter:blur(14px);border-bottom:1px solid #ffffff10}
+nav .wrap{display:flex;align-items:center;gap:20px;min-height:72px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:44px;height:32px}
+.brand b{display:block;font-size:19px}
+.brand small{display:block;font-size:9.5px;letter-spacing:.22em;color:var(--soft);margin-top:2px}
+.links{display:flex;gap:4px 26px;margin-left:auto;font-size:14.5px;flex-wrap:wrap}
+.links a{text-decoration:none;color:#c6cdea;padding:8px 0;position:relative}
+.links a:hover{color:#fff}
+.links a.on::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--blue);border-radius:2px}
+nav .btn{min-height:42px;padding:0 18px;border-radius:10px}
 /* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);min-height:min(78vh,720px)}
-.hero .txt{padding:clamp(40px,6vw,88px) max(5vw,16px);display:flex;flex-direction:column;justify-content:center;gap:24px}
-.hero .txt .lead{margin:0}
-.ctas{display:flex;gap:12px;flex-wrap:wrap}
-.facts{display:flex;gap:28px;flex-wrap:wrap;font-size:14px;color:var(--soft)}.facts b{display:block;color:var(--ink);font:700 22px Archivo,sans-serif}
-.art{background:var(--mint);display:grid;place-items:center;padding:clamp(24px,4vw,56px)}
-.art svg{width:100%;max-width:620px;height:auto;filter:drop-shadow(0 30px 40px #5a1a0033)}
-.blk{animation:pop .7s both}
-@keyframes pop{from{opacity:0;transform:translateY(18px)}}
-@media(prefers-reduced-motion:reduce){.blk{animation:none}html{scroll-behavior:auto}}
-/* grids */
-.grid{display:grid;gap:20px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
-.card{background:var(--card);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:12px}
-.card p{color:var(--soft)}
-.ico{width:48px;height:48px;border-radius:14px;background:var(--mint);display:grid;place-items:center}
-.ico svg{width:26px;height:26px;stroke:#0b0b0b;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.soon{font-size:13px;font-weight:600;align-self:flex-start;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--soft)}
-/* steps */
-.steps{list-style:none;padding:0;margin:40px 0 0;display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));border-top:2px solid var(--ink)}
-.steps li{padding:24px 20px 8px 0;display:flex;flex-direction:column;gap:8px}
-.steps .n{font:700 44px/1 Archivo,sans-serif;color:var(--mintink);-webkit-text-stroke:light-dark(1.5px,0) #0b0b0b}
-.steps p{color:var(--soft)}
+.hero{position:relative;overflow:hidden;padding:clamp(40px,6vw,80px) 0 clamp(48px,6vw,90px)}
+.hero .waves{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:32px;align-items:center;position:relative}
+.hero .txt{display:grid;gap:26px}
+.hero .lead{font-size:clamp(17px,1.5vw,19px);color:#d3d9f3;max-width:34em}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.perks{display:flex;gap:14px 30px;flex-wrap:wrap;font-size:14px;color:#cfd6f2}
+.perks span{display:flex;align-items:center;gap:8px}.perks svg{width:18px;height:18px;color:var(--blue2)}
+.devices{position:relative;aspect-ratio:1.25}
+.devices svg{width:100%;height:100%;overflow:visible}
+.float{animation:fl 6s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-8px)}}
+@media(prefers-reduced-motion:reduce){.float{animation:none}html{scroll-behavior:auto}}
+/* services */
+.head2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px 48px;align-items:end;margin-bottom:40px}
+.cards{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.card{background:linear-gradient(180deg,#0f1840,#0b112e);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:12px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:#2f6bff88;transform:translateY(-4px)}
+.card .ic{width:48px;height:48px;color:var(--blue2)}
+.card .ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card p{color:var(--soft);font-size:15px;flex:1}
+.more{color:var(--blue2);font-weight:700;font-size:14px;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.more:hover{color:#fff}
 /* portfolio */
-.alt{background:var(--card)}
-.port{display:grid;gap:20px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
-.shot{border-radius:16px;overflow:hidden;background:var(--bg);border:1px solid var(--line)}
-.shot .bar{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line)}.shot .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
-.shot .pv{aspect-ratio:16/10;display:grid;place-items:center;color:var(--soft);font-size:14px;background:repeating-linear-gradient(135deg,transparent 0 14px,color-mix(in srgb,var(--line) 60%,transparent) 14px 15px)}
-.shot .cap{padding:16px}.shot .cap p{color:var(--soft);font-size:14px}
+.port{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,2fr);gap:40px;align-items:center}
+.port .intro{display:grid;gap:18px}
+.car{position:relative}
+.track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px}
+.track::-webkit-scrollbar{display:none}
+.proj{flex:0 0 calc((100% - 36px)/3);min-width:240px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.proj .scr{aspect-ratio:4/3;display:block;width:100%}
+.proj .cap{padding:14px 16px;display:grid;gap:4px}
+.proj .tag{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px}
+.proj .tag i{width:8px;height:8px;border-radius:50%;background:var(--blue2)}
+.proj p{font-size:13.5px;color:var(--soft)}
+.proj .st{font-size:12px;color:#b9a4ff}
+.arr{position:absolute;top:40%;width:44px;height:44px;border-radius:50%;border:1px solid #ffffff30;background:#0a1030ee;color:#fff;display:grid;place-items:center;cursor:pointer;z-index:2}
+.arr svg{width:18px;height:18px}
+.arr.l{left:-22px}.arr.r{right:-22px}
 /* about */
-.about{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
-.photo{border-radius:24px;background:var(--mint);color:#0b0b0b;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:360px}
-.pnum b{display:block;font:800 clamp(64px,9vw,104px)/.9 Archivo,sans-serif;font-stretch:125%}
-.pnum span{display:block;margin-top:10px;font-weight:600;max-width:22ch}
-.pfacts{list-style:none;padding:0;margin:0;border-top:2px solid #0b0b0b}
-.pfacts li{padding:10px 0;border-bottom:1px solid #0b0b0b55;font-size:15px}
-.chips{list-style:none;padding:0;margin:24px 0 0;display:flex;flex-wrap:wrap;gap:8px}
-.chips li{border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
-@media(max-width:760px){.about{grid-template-columns:minmax(0,1fr)}.photo{min-height:0}}
-/* prices */
-.prices{display:grid;gap:20px;margin-top:40px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));align-items:stretch}
-.plan{border:2px solid var(--line);border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:16px}
-.plan.top{border-color:var(--ink);background:var(--mint);color:#0b0b0b}.plan.top li,.plan.top .for{color:#0b0b0b}
-.price{font:700 30px/1 Archivo,sans-serif;white-space:nowrap}.price small{font-size:15px;font-weight:500}
-.for{color:var(--soft);font-size:15px}
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.75fr);gap:40px;align-items:center}
+.ide{border-radius:16px;border:1px solid #2f6bff55;background:#070c22;box-shadow:0 30px 60px -30px #2f6bff88,inset 0 0 0 1px #ffffff08;overflow:hidden;font:13px/1.75 ui-monospace,SFMono-Regular,Menlo,monospace}
+.ide .tb{display:flex;gap:6px;padding:12px 14px;border-bottom:1px solid #ffffff10}.ide .tb i{width:10px;height:10px;border-radius:50%;background:#2a3566}
+.ide pre{margin:0;padding:18px 20px;overflow-x:auto;color:#c9d2ff}
+.k{color:#8a6bff}.s{color:#5fd4a8}.f{color:#5aa2ff}.c{color:#56608f}
+.about .txt{display:grid;gap:16px}
+.about .txt p{color:#c3cae6;font-size:15.5px}
+.stats{display:grid;gap:22px;border-left:1px solid var(--line);padding-left:28px}
+.stats div{display:flex;gap:14px;align-items:flex-start;font-size:14.5px;color:#d3d9f3}
+.stats svg{width:30px;height:30px;flex:none;color:var(--blue2);fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+/* steps + plans */
+.steps{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));counter-reset:s}
+.step{border:1px solid var(--line);border-radius:14px;padding:22px;background:#0a1030;display:grid;gap:8px}
+.step b{font:800 14px Sora,sans-serif;color:#fff;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--grad)}
+.step p{color:var(--soft);font-size:14.5px}
+.plans{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));margin-top:40px}
+.plan{border:1px solid var(--line);border-radius:18px;padding:28px;background:var(--card);display:flex;flex-direction:column;gap:14px}
+.plan.top{border-color:transparent;background:linear-gradient(var(--card),var(--card)) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:0 30px 60px -30px #7b3bff99}
+.plan .pr{font:700 24px Sora,sans-serif}
 .plan ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;flex:1}
-.plan li{padding-left:26px;position:relative;color:var(--soft)}
-.plan li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:8px;border-left:2.5px solid currentColor;border-bottom:2.5px solid currentColor;transform:rotate(-45deg);color:#d9461b}
-.plan.top .btn{border-color:#0b0b0b;background:#0b0b0b;color:#fff}
-.note{font-size:13px;color:var(--soft);margin-top:16px}
-/* testimonials */
-.quote{border-radius:20px;border:2px dashed var(--line);padding:28px;display:flex;flex-direction:column;gap:14px;color:var(--soft)}
-.quote .who{display:flex;gap:12px;align-items:center}.quote .av{width:44px;height:44px;border-radius:50%;background:var(--line)}
-/* faq */
-details{border-bottom:1px solid var(--line);padding:18px 0}details summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px}
-details summary::after{content:"+";font:700 22px/1 Archivo}details[open] summary::after{content:"–"}
-details p{color:var(--soft);margin-top:10px;max-width:70ch}
+.plan li{padding-left:24px;position:relative;color:#c3cae6;font-size:15px}
+.plan li::before{content:"";position:absolute;left:2px;top:7px;width:11px;height:6px;border-left:2px solid var(--blue2);border-bottom:2px solid var(--blue2);transform:rotate(-45deg)}
+.badge{align-self:flex-start;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--grad)}
+/* promises (no fake testimonials) */
+.prom{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:40px;align-items:center}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 30px;display:grid;gap:16px;min-height:170px}
+.qcard q{font-style:italic;font-size:18px;color:#e5e9fb;quotes:none}
+.qcard .who{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--soft)}
+.qcard .who svg{width:36px;height:36px;color:var(--blue2)}
+.qnav{display:flex;align-items:center;gap:14px;margin-top:16px}
+.dots{display:flex;gap:6px}.dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:#3a4577;cursor:pointer}.dots button.on{background:var(--blue2);width:22px;border-radius:4px}
+.qnav .arr{position:static}
 /* contact */
-.contact{background:#0b0b0b;color:#f3f3f3}
-.contact .wrap{display:grid;gap:40px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
-.contact .lead{color:#b5b5b5}
-.cinfo{display:grid;gap:14px;margin-top:28px}.cinfo div{display:flex;gap:12px;align-items:center}.cinfo a{text-decoration:none;overflow-wrap:anywhere}.cinfo a:hover{text-decoration:underline}.cinfo span{color:#b5b5b5;width:90px;flex:none;font-size:14px}
-form{background:#161616;border-radius:22px;padding:28px;display:grid;gap:14px}
-label{font-size:14px;color:#c9c9c9;display:grid;gap:6px}
-input,select,textarea{font:16px "Instrument Sans",sans-serif;padding:12px 14px;border-radius:12px;border:1px solid #333;background:#0b0b0b;color:#fff;min-height:48px;width:100%}
-input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--mint);outline-offset:1px}
+.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start}
+.cinfo{display:grid;gap:14px;margin-top:28px}
+.cinfo a,.cinfo div{display:flex;gap:14px;align-items:center;text-decoration:none;color:#d8def5;overflow-wrap:anywhere}
+.cinfo svg{width:22px;height:22px;flex:none;color:var(--blue2)}
+.cinfo a:hover{color:#fff}
+form{background:linear-gradient(180deg,#0f1840,#0b112e);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3vw,32px);display:grid;gap:14px;position:relative}
+label{font-size:14px;color:#c3cae6;display:grid;gap:6px;font-weight:600}
+input,select,textarea{font:16px Manrope,sans-serif;padding:12px 14px;border-radius:12px;border:1px solid #26326a;background:#070c22;color:#fff;min-height:48px;width:100%}
+input::placeholder,textarea::placeholder{color:#6b75a3}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
 textarea{min-height:96px;resize:vertical}
-.two{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
-form .btn{justify-content:center;border:0;cursor:pointer;font-size:16px}
-#ok{font-size:14px;color:var(--mint);min-height:1.4em}
-footer{background:#0b0b0b;color:#8a8a8a;border-top:1px solid #222;font-size:14px}
-footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;padding:24px max(5vw,16px)}
-.fab{position:fixed;right:18px;bottom:18px;z-index:6;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 24px #0004}
+.two{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+#ok{font-size:14px;color:#8fb0ff;min-height:1.4em}
+details{border-bottom:1px solid var(--line);padding:16px 0}
+details summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:16px}
+details summary::after{content:"+";color:var(--blue2);font:700 20px/1 Sora}details[open] summary::after{content:"–"}
+details p{color:var(--soft);margin-top:8px;font-size:15px}
+/* cta */
+.cta{border-radius:22px;background:linear-gradient(100deg,#1f5bff 0%,#3b49ff 45%,#7b3bff 100%);padding:clamp(24px,3vw,34px) clamp(22px,3.5vw,44px);display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px;box-shadow:0 30px 80px -30px #5b4bffcc;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 200px at 85% 0%,#ffffff22,transparent 60%)}
+.cta>*{position:relative}
+.cta svg.rk{width:58px;height:58px;flex:none}
+.cta .t{flex:1 1 320px}.cta h2{font-size:clamp(22px,2.6vw,30px)}.cta p{color:#e3e7ff}
+.cta .ctas .btn.out{border-color:#ffffffaa}
+/* footer */
+footer{border-top:1px solid #ffffff10;margin-top:clamp(48px,6vw,80px)}
+footer .row{display:flex;flex-wrap:wrap;align-items:center;gap:20px 36px;padding:32px 0}
+footer .fl{display:flex;gap:6px 22px;flex-wrap:wrap;font-size:14px}
+footer .fl a{text-decoration:none;color:#c6cdea}
+footer .fc{display:flex;gap:10px 26px;flex-wrap:wrap;font-size:14px;margin-left:auto}
+footer .fc a{display:flex;gap:8px;align-items:center;text-decoration:none;color:#d8def5}
+footer .fc svg,.soc svg{width:20px;height:20px}
+.soc{display:flex;gap:14px}.soc a{color:#fff;display:grid;place-items:center;width:40px;height:40px;border-radius:10px;border:1px solid #ffffff1a}
+.soc a:hover{border-color:var(--blue2)}
+footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:1px solid #ffffff10;padding:18px 0 28px;font-size:13px;color:#8c95bd}
+.fab{position:fixed;right:18px;bottom:18px;z-index:30;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 30px #0008}
 .fab svg{width:30px;height:30px;fill:#fff}
-@media(max-width:860px){.hero,.contact .wrap{grid-template-columns:minmax(0,1fr)}.hero{min-height:0}.art{order:-1}}
-@media(max-width:600px){.links{display:none}nav .btn{margin-left:auto;min-height:44px;padding:0 16px}}
+@media(max-width:980px){.about{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.stats{grid-column:1/-1;border-left:0;padding-left:0;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.port{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:860px){.hero .wrap,.head2,.prom,.contact{grid-template-columns:minmax(0,1fr)}.devices{max-width:560px;width:100%;margin:0 auto}.links{display:none}nav .btn{margin-left:auto}.proj{flex-basis:78%}.arr.l{left:4px}.arr.r{right:4px}}
+@media(max-width:640px){.about{grid-template-columns:minmax(0,1fr)}.brand small{display:none}nav .btn span{display:none}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="gM" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d7bff"/><stop offset="1" stop-color="#8a4bff"/></linearGradient>
+  <symbol id="logo" viewBox="0 0 44 32"><path d="M2 30 12 3h6l4 11 4-11h6l10 27h-7l-6-17-4 11h-6l-4-11-6 17z" fill="url(#gM)"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></symbol>
+  <symbol id="send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
 <nav><div class="wrap">
-  <a class="logo" href="#topo"><i></i>Marcelo Alves</a>
-  <div class="links"><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#como">Como funciona</a><a href="#portfolio">Portfólio</a><a href="#planos">Planos</a><a href="#contato">Contato</a></div>
-  <a class="btn solid" href="#contato">Pedir orçamento</a>
+  <a class="brand" href="#topo" aria-label="Marcelo Alves, início"><svg><use href="#logo"/></svg><span><b>Marcelo Alves</b><small>SOLUÇÕES DIGITAIS</small></span></a>
+  <div class="links" id="links"><a href="#topo" class="on">Home</a><a href="#servicos">Serviços</a><a href="#portfolio">Portfólio</a><a href="#planos">Planos</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></div>
+  <a class="btn pri" href="#contato"><svg><use href="#send"/></svg><span>Solicitar orçamento</span></a>
 </div></nav>
 
 <header class="hero" id="topo">
-  <div class="txt">
-    <h1>Seu negócio com um site profissional, pronto para vender.</h1>
-    <p class="lead">Criamos sites rápidos, bonitos e fáceis de achar no Google, para pequenas empresas e profissionais que querem atrair mais clientes pela internet.</p>
-    <div class="ctas">
-      <a class="btn wa" id="waHero" href="#">Falar no WhatsApp</a>
-      <a class="btn" href="#planos">Ver planos</a>
+  <svg class="waves" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><linearGradient id="wv" x1="0" x2="1"><stop offset="0" stop-color="#2f6bff" stop-opacity="0"/><stop offset=".5" stop-color="#2f6bff" stop-opacity=".55"/><stop offset="1" stop-color="#8a4bff" stop-opacity=".9"/></linearGradient>
+    <radialGradient id="glow" cx=".78" cy=".45" r=".5"><stop offset="0" stop-color="#3b3bff" stop-opacity=".35"/><stop offset="1" stop-color="#060a1c" stop-opacity="0"/></radialGradient></defs>
+    <rect width="1440" height="700" fill="url(#glow)"/>
+    <g fill="none" stroke="url(#wv)" stroke-width="1.2" id="wl"></g>
+  </svg>
+  <div class="wrap">
+    <div class="txt">
+      <h1>Transforme suas ideias em <span class="hl">resultados digitais</span></h1>
+      <p class="lead">Sites, sistemas e automações sob medida para pequenas empresas e profissionais que querem atrair mais clientes e organizar o negócio.</p>
+      <div class="ctas">
+        <a class="btn pri" href="#contato"><svg><use href="#send"/></svg>Solicitar orçamento<svg><use href="#arrow"/></svg></a>
+        <a class="btn out" href="#portfolio">Conheça meu trabalho</a>
+      </div>
+      <div class="perks">
+        <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>Entrega ágil</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>Qualidade garantida</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>Suporte próximo</span>
+      </div>
     </div>
-    <div class="facts"><div><b>Celular primeiro</b>funciona em qualquer tela</div><div><b>Do zero ao ar</b>com domínio e hospedagem</div><div><b>Suporte</b>depois da entrega</div></div>
-  </div>
-  <div class="art" aria-hidden="true">
-    <svg viewBox="0 0 600 440">
-      <rect x="20" y="20" width="560" height="400" rx="22" fill="#fff"/>
-      <rect x="20" y="20" width="560" height="44" rx="22" fill="#0b0b0b"/><rect x="20" y="42" width="560" height="22" fill="#0b0b0b"/>
-      <circle cx="50" cy="42" r="6" fill="#ff6b5b"/><circle cx="70" cy="42" r="6" fill="#ffc94a"/><circle cx="90" cy="42" r="6" fill="#4ade80"/>
-      <rect x="120" y="33" width="300" height="18" rx="9" fill="#2a2a2a"/><rect x="134" y="39" width="130" height="6" rx="3" fill="#777"/>
-      <g class="blk" style="animation-delay:.1s"><rect x="48" y="86" width="90" height="12" rx="6" fill="#0b0b0b"/><rect x="380" y="88" width="40" height="8" rx="4" fill="#ccc"/><rect x="430" y="88" width="40" height="8" rx="4" fill="#ccc"/><rect x="480" y="82" width="72" height="20" rx="10" fill="#0b0b0b"/></g>
-      <g class="blk" style="animation-delay:.3s"><rect x="48" y="128" width="250" height="22" rx="6" fill="#0b0b0b"/><rect x="48" y="158" width="200" height="22" rx="6" fill="#0b0b0b"/><rect x="48" y="196" width="230" height="8" rx="4" fill="#bbb"/><rect x="48" y="212" width="190" height="8" rx="4" fill="#bbb"/><rect x="48" y="236" width="110" height="30" rx="15" fill="#25d366"/></g>
-      <g class="blk" style="animation-delay:.5s"><rect x="324" y="122" width="228" height="150" rx="14" fill="#ff6a3d"/><circle cx="400" cy="180" r="30" fill="#0b0b0b" opacity=".85"/><path d="M360 262l60-50 40 30 30-20 62 40z" fill="#0b0b0b" opacity=".85"/><circle cx="500" cy="160" r="12" fill="#fff"/></g>
-      <g class="blk" style="animation-delay:.7s"><g id="c"><rect x="48" y="296" width="156" height="98" rx="12" fill="#f2f2f2"/><rect x="62" y="310" width="28" height="28" rx="8" fill="#ff6a3d"/><rect x="62" y="350" width="110" height="8" rx="4" fill="#0b0b0b"/><rect x="62" y="366" width="80" height="6" rx="3" fill="#bbb"/></g><use href="#c" x="174"/><use href="#c" x="348"/></g>
-      <g class="blk" style="animation-delay:.9s"><rect x="470" y="330" width="120" height="96" rx="16" fill="#0b0b0b"/><rect x="480" y="340" width="100" height="62" rx="8" fill="#ff6a3d"/><rect x="510" y="410" width="40" height="6" rx="3" fill="#555"/></g>
-    </svg>
+    <div class="devices" aria-hidden="true">
+      <svg viewBox="0 0 640 512">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1440"/><stop offset=".6" stop-color="#1a1f5c"/><stop offset="1" stop-color="#0a0f2e"/></linearGradient>
+          <linearGradient id="mtn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9d6ff"/><stop offset=".25" stop-color="#4f63b8"/><stop offset="1" stop-color="#0c1236"/></linearGradient>
+          <linearGradient id="alu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d7dbe8"/><stop offset="1" stop-color="#6c7390"/></linearGradient>
+          <linearGradient id="rim" x1="0" x2="1"><stop offset="0" stop-color="#2f6bff"/><stop offset="1" stop-color="#8a4bff"/></linearGradient>
+          <clipPath id="lcd"><path d="M150 70 L560 38 L556 300 L170 322 Z"/></clipPath>
+          <clipPath id="pcd"><rect x="18" y="16" width="124" height="262" rx="18"/></clipPath>
+        </defs>
+        <ellipse cx="350" cy="440" rx="290" ry="26" fill="#2f6bff" opacity=".18"/>
+        <!-- laptop -->
+        <path d="M140 58 L572 24 Q584 23 584 35 L578 304 Q578 314 568 315 L162 336 Q150 337 150 326 Z" fill="#0b0f22" stroke="url(#rim)" stroke-width="1.5"/>
+        <g clip-path="url(#lcd)">
+          <rect x="140" y="20" width="440" height="320" fill="url(#sky)"/>
+          <circle cx="470" cy="90" r="16" fill="#e8edff" opacity=".85"/>
+          <path d="M150 290 L270 170 L320 205 L400 110 L470 175 L520 140 L570 200 L570 330 L150 330 Z" fill="url(#mtn)"/>
+          <path d="M400 110 L380 140 L395 135 L405 150 L418 128 Z" fill="#fff" opacity=".9"/>
+          <path d="M150 300 L240 250 L330 280 L430 230 L570 270 L570 330 L150 330Z" fill="#0a0f2e" opacity=".8"/>
+          <rect x="172" y="78" width="44" height="6" rx="3" fill="#8fb0ff"/>
+          <rect x="420" y="66" width="120" height="5" rx="2.5" fill="#ffffff40"/>
+          <text x="178" y="152" fill="#fff" font-family="Sora" font-weight="700" font-size="22" transform="rotate(-4 178 152)">Seu negócio</text>
+          <text x="180" y="180" fill="#fff" font-family="Sora" font-weight="700" font-size="22" transform="rotate(-4 180 180)">sempre à frente</text>
+          <rect x="182" y="198" width="70" height="20" rx="10" fill="#2f6bff" transform="rotate(-4 182 198)"/>
+        </g>
+        <path d="M90 340 L620 312 Q636 312 630 324 L612 350 Q606 358 590 359 L120 384 Q100 385 92 372 L84 352 Q82 341 90 340Z" fill="url(#alu)"/>
+        <path d="M300 345 L420 339" stroke="#4b5170" stroke-width="4" stroke-linecap="round"/>
+        <!-- phone -->
+        <g class="float" transform="translate(470 120) rotate(6)">
+          <rect x="6" y="4" width="148" height="286" rx="26" fill="#0b0f22" stroke="url(#rim)" stroke-width="2"/>
+          <g clip-path="url(#pcd)">
+            <rect x="18" y="16" width="124" height="262" fill="url(#sky)"/>
+            <path d="M18 200 L60 150 L90 175 L142 120 L142 278 L18 278Z" fill="url(#mtn)" opacity=".9"/>
+            <use href="#logo" x="30" y="40" width="26" height="20"/>
+            <text x="30" y="108" fill="#fff" font-family="Sora" font-weight="700" font-size="15">Inovação</text>
+            <text x="30" y="128" fill="#fff" font-family="Sora" font-weight="700" font-size="15">em cada</text>
+            <text x="30" y="148" fill="#fff" font-family="Sora" font-weight="700" font-size="15">detalhe</text>
+            <circle cx="42" cy="236" r="12" fill="#2f6bff"/><path d="M37 236h10m-4-4 4 4-4 4" stroke="#fff" stroke-width="2" fill="none"/>
+          </g>
+          <rect x="62" y="20" width="36" height="8" rx="4" fill="#000"/>
+        </g>
+      </svg>
+    </div>
   </div>
 </header>
 
 <section class="band" id="servicos"><div class="wrap">
-  <h2>O que eu faço por você</h2>
-  <p class="lead">Começamos pelos sites. Em breve, também sistemas e programas sob medida para o seu negócio.</p>
-  <div class="grid" id="srv"></div>
+  <div class="head2">
+    <div><div class="kicker">NOSSOS SERVIÇOS</div><h2>Soluções completas para sua jornada digital</h2></div>
+    <p class="muted">Do planejamento à entrega, eu cuido de tudo: você recebe uma solução sob medida, explicada sem complicação técnica.</p>
+  </div>
+  <div class="cards" id="srv"></div>
 </div></section>
 
-<section class="band alt" id="sobre"><div class="wrap about">
-  <div class="photo"><div class="pnum"><b>2014</b><span>começo da minha carreira em vendas e negócios</span></div><ul class="pfacts"><li>Análise e Desenvolvimento de Sistemas, Estácio</li><li>Juiz de Fora, MG</li><li>Inglês B2</li></ul></div>
-  <div>
-    <h2>Quem faz o seu site</h2>
-    <p class="lead">Sou Marcelo Alves, de Juiz de Fora (MG). Trabalho com vendas consultivas B2B desde 2014, em empresas de tecnologia, telecomunicações e saúde, como Samsung, 99Food/DiDi e ProMedical.</p>
-    <p class="lead">Hoje curso Análise e Desenvolvimento de Sistemas na Estácio e desenvolvo projetos com Node.js, TypeScript, SQL e APIs. Esse é o meu diferencial: eu entendo de negócio e de tecnologia, então o site nasce pensado para trazer clientes, e não só para ficar bonito.</p>
-    <ul class="chips"><li>Vendas B2B desde 2014</li><li>Node.js e TypeScript</li><li>PostgreSQL e APIs</li><li>Automação e IA</li><li>Mercado de saúde</li></ul>
+<section class="band" id="portfolio" style="padding-top:0"><div class="wrap port">
+  <div class="intro">
+    <div class="kicker">PORTFÓLIO</div>
+    <h2>Projetos que resolvem problemas reais</h2>
+    <p class="muted">Projetos próprios em desenvolvimento, criados a partir da minha experiência no mercado de saúde e serviços. Os sites de clientes entram aqui conforme forem entregues.</p>
+    <p><a class="btn out" href="https://github.com/WieskaMarcelo" target="_blank" rel="noopener">Ver no GitHub<svg><use href="#arrow"/></svg></a></p>
+  </div>
+  <div class="car">
+    <button class="arr l" id="pPrev" aria-label="Projeto anterior"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+    <div class="track" id="prt" tabindex="0" aria-label="Projetos"></div>
+    <button class="arr r" id="pNext" aria-label="Próximo projeto"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
   </div>
 </div></section>
 
-<section class="band" id="como"><div class="wrap">
-  <h2>Como funciona</h2>
-  <p class="lead">Um processo simples, sem complicação técnica do seu lado.</p>
-  <ol class="steps" id="stp"></ol>
+<section class="band" id="sobre" style="background:radial-gradient(700px 400px at 0% 60%,#2f6bff1f,transparent 70%)"><div class="wrap about">
+  <div class="ide" aria-hidden="true">
+    <div class="tb"><i></i><i></i><i></i></div>
+<pre><span class="c">// lead chegou pelo site</span>
+<span class="k">export async function</span> <span class="f">novoLead</span>(dados) {
+  <span class="k">const</span> lead = <span class="k">await</span> db.<span class="f">insert</span>(<span class="s">"leads"</span>, dados);
+  <span class="k">await</span> whatsapp.<span class="f">avisar</span>(lead);
+  <span class="k">return</span> { status: <span class="s">"novo"</span> };
+}
+
+<span class="c">// negócio + tecnologia</span>
+<span class="k">const</span> foco = [<span class="s">"vendas"</span>, <span class="s">"código"</span>, <span class="s">"resultado"</span>];</pre>
+  </div>
+  <div class="txt">
+    <div class="kicker">SOBRE</div>
+    <h2>Experiência comercial, tecnologia e foco em resultado</h2>
+    <p>Sou Marcelo Alves, de Juiz de Fora (MG). Trabalho com vendas consultivas B2B desde 2014, em empresas como Samsung, 99Food/DiDi e ProMedical, nos setores de tecnologia, telecom e saúde.</p>
+    <p>Curso Análise e Desenvolvimento de Sistemas na Estácio e desenvolvo com Node.js, TypeScript, SQL e APIs. Por entender de negócio e de código, cada site nasce pensado para trazer clientes.</p>
+    <p><a class="btn out" href="https://www.linkedin.com/in/marcelo-alves989/" target="_blank" rel="noopener">Conheça minha trajetória<svg><use href="#arrow"/></svg></a></p>
+  </div>
+  <div class="stats">
+    <div><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg><span>Mais de 10 anos de experiência comercial e em tecnologia</span></div>
+    <div><svg viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/></svg><span>Node.js, TypeScript, PostgreSQL, APIs e IA</span></div>
+    <div><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Atendimento próximo em Juiz de Fora e online para todo o Brasil</span></div>
+  </div>
 </div></section>
 
-<section class="band alt" id="portfolio"><div class="wrap">
-  <h2>Portfólio</h2>
-  <p class="lead">Projetos próprios em andamento. Os sites de clientes entram aqui conforme forem entregues.</p>
-  <div class="port" id="prt"></div>
+<section class="band" id="como" style="padding-top:0"><div class="wrap">
+  <div class="kicker">COMO FUNCIONA</div>
+  <h2 style="margin-bottom:32px">Do primeiro contato ao site no ar</h2>
+  <div class="steps" id="stp"></div>
 </div></section>
 
-<section class="band" id="planos"><div class="wrap">
-  <h2>Planos para cada momento do seu negócio</h2>
-  <p class="lead">Escolha um ponto de partida. Todo projeto pode ser ajustado ao que você precisa.</p>
-  <div class="prices" id="prc"></div>
-  <p class="note">Cada orçamento é feito sob medida. Domínio e hospedagem podem ser incluídos.</p>
+<section class="band" id="planos" style="padding-top:0"><div class="wrap">
+  <div class="head2" style="margin-bottom:0">
+    <div><div class="kicker">PLANOS</div><h2>Um ponto de partida para cada negócio</h2></div>
+    <p class="muted">Cada orçamento é feito sob medida. Domínio e hospedagem podem ser incluídos.</p>
+  </div>
+  <div class="plans" id="prc"></div>
 </div></section>
 
-<section class="band alt" id="depoimentos"><div class="wrap">
-  <h2>O que dizem os clientes</h2>
-  <p class="lead">Espaço reservado para depoimentos reais dos seus primeiros clientes.</p>
-  <div class="grid" id="dep"></div>
-</div></section>
-
-<section class="band" id="duvidas"><div class="wrap" style="max-width:860px">
-  <h2>Dúvidas frequentes</h2>
-  <div id="faq" style="margin-top:28px"></div>
-</div></section>
-
-<section class="band contact" id="contato"><div class="wrap">
+<section class="band" id="compromisso" style="padding-top:0"><div class="wrap prom">
   <div>
-    <h2>Vamos tirar o seu site do papel?</h2>
-    <p class="lead">Conte um pouco sobre o seu negócio e eu respondo com uma proposta.</p>
+    <div class="kicker">COMPROMISSO</div>
+    <h2>O que você pode esperar</h2>
+    <p class="muted" style="margin-top:14px">Os primeiros projetos de clientes estão em andamento. Enquanto os depoimentos não chegam, estes são os compromissos de cada entrega.</p>
+  </div>
+  <div>
+    <div class="qcard" id="qc" aria-live="polite"></div>
+    <div class="qnav"><button class="arr" id="qPrev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><div class="dots" id="qd"></div><button class="arr" id="qNext" aria-label="Próximo"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div>
+  </div>
+</div></section>
+
+<section class="band" id="contato" style="padding-top:0"><div class="wrap contact">
+  <div>
+    <div class="kicker">CONTATO</div>
+    <h2>Conte sua ideia e receba uma proposta</h2>
+    <p class="muted" style="margin-top:14px">Preencha o formulário: ele abre o WhatsApp com sua mensagem pronta e eu respondo o quanto antes.</p>
     <div class="cinfo">
-      <div><span>WhatsApp</span><b id="waTxt">(32) 99828-2452</b></div>
-      <div><span>E-mail</span><b><a href="mailto:marceloalvesjf@gmail.com">marceloalvesjf@gmail.com</a></b></div>
-      <div><span>Instagram</span><b><a href="https://www.instagram.com/alvesmm__/" target="_blank" rel="noopener">@alvesmm__</a></b></div>
-      <div><span>GitHub</span><b><a href="https://github.com/WieskaMarcelo" target="_blank" rel="noopener">WieskaMarcelo</a></b></div>
-      <div><span>LinkedIn</span><b><a href="https://www.linkedin.com/in/marcelo-alves989/" target="_blank" rel="noopener">marcelo-alves989</a></b></div>
-      <div><span>Atendimento</span><b>Juiz de Fora, MG e todo o Brasil, online</b></div>
+      <a href="#" id="waContact"><svg><use href="#wa"/></svg>(32) 99828-2452</a>
+      <a href="mailto:marceloalvesjf@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>marceloalvesjf@gmail.com</a>
+      <a href="https://www.instagram.com/alvesmm__/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>@alvesmm__</a>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Juiz de Fora, MG e todo o Brasil, online</div>
     </div>
-    <p style="margin-top:28px"><a class="btn wa" id="waContact" href="#">Chamar no WhatsApp</a></p>
+    <div id="faq" style="margin-top:32px"></div>
   </div>
-  <form id="f" novalidate style="position:relative">
+  <form id="f" novalidate>
     <label>Seu nome<input id="fn" autocomplete="name" required></label>
     <div class="two"><label>WhatsApp<input id="fp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" required></label><label>E-mail<input id="fe" type="email" autocomplete="email" placeholder="opcional"></label></div>
     <label>Tipo de negócio<input id="fb" placeholder="Ex.: salão de beleza, loja, consultório"></label>
-    <label>O que você precisa<select id="ft"><option>Site institucional</option><option>Landing page</option><option>Loja virtual</option><option>Sistema ou programa</option><option>Ainda não sei</option></select></label>
+    <label>O que você precisa<select id="ft"><option>Site institucional</option><option>Landing page</option><option>Loja virtual</option><option>Sistema ou programa</option><option>Automação com IA</option><option>Ainda não sei</option></select></label>
     <div class="two"><label>Investimento previsto<select id="fv"><option>Ainda não sei</option><option>Até R$ 1.000</option><option>R$ 1.000 a R$ 3.000</option><option>R$ 3.000 a R$ 6.000</option><option>Acima de R$ 6.000</option></select></label><label>Para quando<select id="fd"><option>Sem pressa</option><option>Este mês</option><option>Nas próximas semanas</option><option>Urgente</option></select></label></div>
     <label>Mensagem<textarea id="fm" placeholder="Conte sua ideia"></textarea></label>
     <input id="fh" name="empresa_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-    <button class="btn wa" type="submit">Enviar pelo WhatsApp</button>
+    <button class="btn pri" type="submit"><svg><use href="#send"/></svg>Enviar pedido de orçamento</button>
     <p id="ok" role="status"></p>
   </form>
 </div></section>
 
-<footer><div class="wrap"><span>© 2026 Marcelo Alves. Todos os direitos reservados.</span><span><a href="https://github.com/WieskaMarcelo" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/marcelo-alves989/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://www.instagram.com/alvesmm__/" target="_blank" rel="noopener">Instagram</a></span></div></footer>
+<div class="wrap">
+  <div class="cta">
+    <svg class="rk" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" aria-hidden="true"><path d="M38 8c10 0 18 8 18 18-6 6-14 12-22 16l-12-12C26 22 32 14 38 8z"/><circle cx="41" cy="23" r="4"/><path d="M22 30l-10 2-4 8 12-2M34 42l-2 10-8 4 2-12M18 46c-4 0-8 4-8 8 4 0 8-4 8-8z"/></svg>
+    <div class="t"><h2>Vamos tirar seu projeto do papel?</h2><p>Fale agora e receba um orçamento sem compromisso.</p></div>
+    <div class="ctas"><a class="btn white" id="waCta" href="#"><svg style="color:#25d366"><use href="#wa"/></svg>Falar no WhatsApp<svg><use href="#arrow"/></svg></a><a class="btn out" href="#contato" style="color:#fff">Solicitar orçamento</a></div>
+  </div>
+</div>
 
-<a class="fab" id="waFab" href="#" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+<footer><div class="wrap">
+  <div class="row">
+    <a class="brand" href="#topo"><svg><use href="#logo"/></svg><span><b>Marcelo Alves</b><small>SOLUÇÕES DIGITAIS</small></span></a>
+    <div class="fl"><a href="#topo">Home</a><a href="#servicos">Serviços</a><a href="#portfolio">Portfólio</a><a href="#planos">Planos</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></div>
+    <div class="fc"><a href="#" id="waFoot"><svg style="color:#25d366"><use href="#wa"/></svg>(32) 99828-2452</a><a href="mailto:marceloalvesjf@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="#4f8bff" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>marceloalvesjf@gmail.com</a></div>
+    <div class="soc">
+      <a href="https://www.linkedin.com/in/marcelo-alves989/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg></a>
+      <a href="https://github.com/WieskaMarcelo" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg></a>
+      <a href="https://www.instagram.com/alvesmm__/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+  <div class="bt"><span>© 2026 Marcelo Alves. Todos os direitos reservados.</span><span>Inovação · Tecnologia · Resultados</span></div>
+</div></footer>
+
+<a class="fab" id="waFab" href="#" aria-label="Falar no WhatsApp"><svg><use href="#wa"/></svg></a>
 
 <script src="config.js"></script>
 <script>
 {
+const $ = id => document.getElementById(id);
 const WA = "5532998282452";
 const waLink = t => "https://wa.me/" + WA + "?text=" + encodeURIComponent(t);
 const hi = "Olá! Vi seu site e quero um orçamento.";
-for (const id of ["waHero","waContact","waFab"]) { const a = document.getElementById(id); a.href = waLink(hi); a.target = "_blank"; a.rel = "noopener"; }
+for (const id of ["waContact","waFab","waCta","waFoot"]) { const a = $(id); a.href = waLink(hi); a.target = "_blank"; a.rel = "noopener"; }
+
+// ondas de luz do hero
+$("wl").innerHTML = Array.from({length:14}, (_, i) => {
+  const y = 300 + i * 14, a = 120 + i * 6;
+  return `<path d="M-50 ${y + 220} C 300 ${y + 260}, 700 ${y - a}, 1100 ${y - 40} S 1400 ${y - 260}, 1500 ${y - 300}" opacity="${(0.25 + i / 22).toFixed(2)}"/>`;
+}).join("");
 
 const I = {
-  site:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01"/>',
-  page:'<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>',
-  shop:'<path d="M4 7h16l-1.5 9h-13zM9 20a1 1 0 1 0 0-.01M17 20a1 1 0 1 0 0-.01M4 7 3 4"/>',
-  seo:'<circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/>',
-  fix:'<path d="M14 7a4 4 0 0 1-5 5l-5 5 3 3 5-5a4 4 0 0 1 5-5l-3-3z"/>',
-  code:'<path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 6l-2 12"/>'
+  code:'<path d="m16 14-8 10 8 10M32 14l8 10-8 10M27 10l-6 28"/>',
+  app:'<rect x="6" y="9" width="30" height="22" rx="3"/><path d="M14 38h14M21 31v7M12 25l6-6 5 4 7-8"/><rect x="34" y="20" width="9" height="16" rx="2"/>',
+  ai:'<path d="M18 9a6 6 0 0 0-6 6 6 6 0 0 0-3 11 6 6 0 0 0 9 8V9zM30 9a6 6 0 0 1 6 6 6 6 0 0 1 3 11 6 6 0 0 1-9 8V9z"/><path d="M18 18h-3M18 26h-4M30 18h3M30 26h4M24 9v29"/>',
+  cart:'<path d="M5 8h6l4 20h22l4-14H13"/><circle cx="18" cy="36" r="3"/><circle cx="33" cy="36" r="3"/>'
 };
 const srv = [
-  ["site","Site institucional","Apresente sua empresa, serviços e contatos com uma página profissional que passa confiança."],
-  ["page","Landing page","Uma página focada em um produto ou campanha, feita para transformar visitas em contatos."],
-  ["shop","Loja virtual","Venda pela internet com catálogo, carrinho e pagamento online."],
-  ["seo","Google e SEO básico","Seu site preparado para aparecer nas buscas e no Google Maps."],
-  ["fix","Manutenção","Atualizações de conteúdo, ajustes e segurança depois que o site está no ar."],
-  ["code","Sistemas e programas","Ferramentas sob medida para organizar e automatizar o seu negócio.",true]
+  ["code","Desenvolvimento de sites","Sites institucionais, landing pages e páginas que transformam visitas em contatos.","Site institucional"],
+  ["app","Sistemas e aplicações","Sistemas sob medida, painéis e gestão de dados para organizar o seu negócio.","Sistema ou programa"],
+  ["ai","IA e automação","Automação de processos, atendimento e integrações com APIs e inteligência artificial.","Automação com IA"],
+  ["cart","E-commerce","Lojas virtuais com catálogo, carrinho e pagamento online.","Loja virtual"]
 ];
-document.getElementById("srv").innerHTML = srv.map(([i,t,d,s]) =>
-  `<article class="card"><div class="ico"><svg viewBox="0 0 24 24">${I[i]}</svg></div><h3>${t}</h3><p>${d}</p>${s?'<span class="soon">Em breve</span>':''}</article>`).join("");
+$("srv").innerHTML = srv.map(([i,t,d,o]) =>
+  `<article class="card"><div class="ic"><svg viewBox="0 0 48 48">${I[i]}</svg></div><h3>${t}</h3><p>${d}</p><a class="more" href="#contato" data-opt="${o}">Pedir orçamento <svg width="16" height="16"><use href="#arrow"/></svg></a></article>`).join("");
+
+// telas desenhadas dos projetos
+const scr = {
+  fin:`<rect width="400" height="300" fill="#0b1235"/><rect x="0" y="0" width="70" height="300" fill="#08102b"/>${[40,70,100,130].map(y=>`<rect x="16" y="${y}" width="38" height="6" rx="3" fill="#2a3a7a"/>`).join("")}<rect x="90" y="24" width="120" height="10" rx="5" fill="#cfe0ff"/>${[0,1,2].map(i=>`<rect x="${90+i*100}" y="50" width="90" height="56" rx="8" fill="#111c4d"/><rect x="${102+i*100}" y="64" width="40" height="6" rx="3" fill="#5a6aa8"/><rect x="${102+i*100}" y="80" width="56" height="12" rx="4" fill="${["#4f8bff","#5fd4a8","#a07bff"][i]}"/>`).join("")}<rect x="90" y="122" width="290" height="156" rx="10" fill="#111c4d"/><path d="M106 250 L150 220 L190 232 L230 186 L270 200 L310 160 L360 176" fill="none" stroke="#4f8bff" stroke-width="3"/><path d="M106 250 L150 220 L190 232 L230 186 L270 200 L310 160 L360 176 L360 262 L106 262Z" fill="#4f8bff22"/>`,
+  crm:`<rect width="400" height="300" fill="#f3f6ff"/><rect width="400" height="40" fill="#2f6bff"/><rect x="16" y="15" width="80" height="10" rx="5" fill="#fff"/>${[0,1,2].map(c=>`<rect x="${16+c*126}" y="56" width="116" height="228" rx="10" fill="#e3e9ff"/><rect x="${28+c*126}" y="68" width="60" height="8" rx="4" fill="#5a6aa8"/>${[0,1,2].map(r=>`<rect x="${26+c*126}" y="${88+r*62}" width="96" height="52" rx="8" fill="#fff"/><circle cx="${42+c*126}" cy="${106+r*62}" r="9" fill="${["#a07bff","#4f8bff","#5fd4a8"][(c+r)%3]}"/><rect x="${56+c*126}" y="${100+r*62}" width="50" height="6" rx="3" fill="#2a3566"/><rect x="${56+c*126}" y="${112+r*62}" width="34" height="5" rx="2.5" fill="#9aa6d6"/>`).join("")}`).join("")}`,
+  pet:`<rect width="400" height="300" fill="#140d33"/><circle cx="320" cy="60" r="90" fill="#7b3bff33"/><rect x="140" y="20" width="120" height="260" rx="20" fill="#0b0f22" stroke="#7b3bff" stroke-width="2"/><rect x="150" y="34" width="100" height="232" rx="12" fill="#1c1450"/><path d="M150 140 Q200 110 250 150 L250 266 L150 266Z" fill="#2c6a5a"/><path d="M160 200 C180 170 210 220 240 180" stroke="#ffd36b" stroke-width="3" fill="none" stroke-dasharray="6 6"/><circle cx="240" cy="180" r="7" fill="#ffd36b"/><rect x="160" y="50" width="60" height="8" rx="4" fill="#fff"/><rect x="160" y="226" width="80" height="26" rx="13" fill="#7b3bff"/><text x="200" y="244" fill="#fff" font-family="Sora" font-size="11" text-anchor="middle">Passear</text>`
+};
+const prj = [
+  ["fin","Sistema Financeiro Hospitalar","Controle financeiro para a rotina de hospitais e clínicas."],
+  ["crm","CRM Odontológico","Plataforma SaaS para clínicas organizarem pacientes e agenda."],
+  ["pet","PetWalk","App que conecta donos de pets a passeadores."]
+];
+$("prt").innerHTML = prj.map(([k,t,d]) =>
+  `<article class="proj"><svg class="scr" viewBox="0 0 400 300" aria-hidden="true">${scr[k]}</svg><div class="cap"><span class="tag"><i></i>${t}</span><p>${d}</p><span class="st">Em desenvolvimento</span></div></article>`).join("");
+const step = d => { const t = $("prt"), w = t.querySelector(".proj").offsetWidth + 18; t.scrollBy({left: d * w, behavior: "smooth"}); };
+$("pPrev").addEventListener("click", () => step(-1));
+$("pNext").addEventListener("click", () => step(1));
+$("prt").addEventListener("keydown", e => { if (e.key === "ArrowLeft") step(-1); if (e.key === "ArrowRight") step(1); });
 
 const stp = [
-  ["Conversa","Você conta sobre o seu negócio e o que espera do site."],
-  ["Proposta","Envio orçamento, prazo e o que está incluído."],
-  ["Criação","Desenvolvo o site e você acompanha e pede ajustes."],
-  ["No ar","Publico com domínio, hospedagem e ensino você a usar."]
+  ["Conversa","Você conta sobre o seu negócio e o que espera do projeto."],
+  ["Proposta","Envio orçamento, prazo e tudo o que está incluído."],
+  ["Criação","Desenvolvo e você acompanha, pedindo ajustes."],
+  ["No ar","Publico com domínio e hospedagem e ensino você a usar."]
 ];
-document.getElementById("stp").innerHTML = stp.map(([t,d],i) =>
-  `<li><span class="n">${i+1}</span><h3>${t}</h3><p>${d}</p></li>`).join("");
-
-document.getElementById("prt").innerHTML = [["Sistema Financeiro Hospitalar","Controle financeiro pensado para a rotina de hospitais e clínicas."],["CRM Odontológico","Plataforma SaaS para clínicas organizarem pacientes, agenda e relacionamento."],["PetWalk","Plataforma que conecta donos de pets a passeadores."]].map(([p,d]) =>
-  `<article class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="pv">Imagem do projeto</div><div class="cap"><h3>${p}</h3><p>${d}</p><span class="soon" style="margin-top:10px;display:inline-block">Em desenvolvimento</span></div></article>`).join("");
+$("stp").innerHTML = stp.map(([t,d],i) => `<div class="step"><b>${i+1}</b><h3>${t}</h3><p>${d}</p></div>`).join("");
 
 const prc = [
-  ["Essencial","Sob consulta","Para quem precisa marcar presença rápido.",["Landing page de uma página","Botão de WhatsApp","Adaptado para celular","Entrega rápida"]],
-  ["Profissional","Sob consulta","O mais pedido por pequenas empresas.",["Site com até 5 páginas","Formulário de contato","Google e SEO básico","Integração com redes sociais","30 dias de suporte"],true],
-  ["Loja virtual","Sob consulta","Para vender seus produtos online.",["Catálogo de produtos","Carrinho e pagamento online","Painel para gerenciar pedidos","Treinamento de uso"]]
+  ["Essencial","Para quem precisa marcar presença rápido.",["Landing page de uma página","Botão de WhatsApp","Adaptado para celular","Entrega rápida"]],
+  ["Profissional","O mais pedido por pequenas empresas.",["Site com até 5 páginas","Formulário com captação de leads","Google e SEO básico","Integração com redes sociais","30 dias de suporte"],true],
+  ["Loja virtual","Para vender seus produtos online.",["Catálogo de produtos","Carrinho e pagamento online","Painel para gerenciar pedidos","Treinamento de uso"]]
 ];
-document.getElementById("prc").innerHTML = prc.map(([n,p,f,l,top]) =>
-  `<article class="plan${top?' top':''}"><h3>${n}</h3><div class="price">${p}</div><p class="for">${f}</p><ul>${l.map(x=>`<li>${x}</li>`).join("")}</ul><a class="btn${top?'':' solid'}" href="#contato" data-plan="${n}">Quero este</a></article>`).join("");
+$("prc").innerHTML = prc.map(([n,f,l,top]) =>
+  `<article class="plan${top?" top":""}">${top?'<span class="badge">Mais pedido</span>':""}<h3>${n}</h3><div class="pr">Sob consulta</div><p class="muted" style="font-size:15px">${f}</p><ul>${l.map(x=>`<li>${x}</li>`).join("")}</ul><a class="btn ${top?"pri":"out"}" href="#contato" data-plan="${n}">Quero este plano</a></article>`).join("");
 
-document.getElementById("dep").innerHTML = [1,2,3].map(n =>
-  `<article class="quote"><p>Depoimento do cliente ${n} entra aqui.</p><div class="who"><div class="av"></div><div><b>Nome do cliente</b><br><small>Empresa</small></div></div></article>`).join("");
+const prom = [
+  ["Você acompanha cada etapa e aprova antes de ir ao ar.","Transparência"],
+  ["Site rápido, adaptado ao celular e pronto para aparecer no Google.","Qualidade técnica"],
+  ["Depois da entrega, continuo por perto para ajustes e dúvidas.","Suporte"],
+  ["Cada pedido de orçamento chega organizado, para nenhum cliente ficar sem resposta.","Captação de leads"]
+];
+let qi = 0;
+$("qd").innerHTML = prom.map((_, i) => `<button aria-label="Item ${i+1}"></button>`).join("");
+const showQ = i => {
+  qi = (i + prom.length) % prom.length;
+  $("qc").innerHTML = `<svg width="34" height="26" viewBox="0 0 34 26" fill="#4f8bff"><path d="M0 26V14C0 6 4 1 12 0l1 4c-4 1-6 4-6 8h6v14zm20 0V14c0-8 4-13 12-14l1 4c-4 1-6 4-6 8h6v14z"/></svg><q>${prom[qi][0]}</q><div class="who"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg><b style="color:#fff">${prom[qi][1]}</b></div>`;
+  [...$("qd").children].forEach((b, j) => b.classList.toggle("on", j === qi));
+};
+$("qPrev").addEventListener("click", () => showQ(qi - 1));
+$("qNext").addEventListener("click", () => showQ(qi + 1));
+$("qd").addEventListener("click", e => { const b = e.target.closest("button"); if (b) showQ([...$("qd").children].indexOf(b)); });
+showQ(0);
 
 const faq = [
-  ["Quanto tempo leva para o site ficar pronto?","Depende do tamanho do projeto. Uma landing page costuma levar poucos dias; sites maiores e lojas levam mais. O prazo exato vai na proposta."],
-  ["Preciso entender de tecnologia?","Não. Eu cuido de toda a parte técnica, do domínio à publicação, e explico o que for preciso."],
-  ["Posso atualizar o site depois?","Sim. Você pode pedir ajustes pelo plano de manutenção ou aprender a editar os textos sozinho."],
+  ["Quanto tempo leva para ficar pronto?","Depende do tamanho do projeto. Uma landing page costuma levar poucos dias; sites maiores e lojas levam mais. O prazo exato vai na proposta."],
+  ["Preciso entender de tecnologia?","Não. Eu cuido da parte técnica, do domínio à publicação, e explico o que for preciso."],
   ["Como funciona o pagamento?","As condições são combinadas na proposta, com opção de parcelamento."]
 ];
-document.getElementById("faq").innerHTML = faq.map(([q,a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join("");
+$("faq").innerHTML = faq.map(([q,a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join("");
 
-document.querySelectorAll("[data-plan]").forEach(b => b.addEventListener("click", () => {
-  document.getElementById("fm").value = "Tenho interesse no plano " + b.dataset.plan + ".";
-}));
+document.addEventListener("click", e => {
+  const p = e.target.closest("[data-plan]"); if (p) $("fm").value = "Tenho interesse no plano " + p.dataset.plan + ".";
+  const o = e.target.closest("[data-opt]"); if (o) $("ft").value = o.dataset.opt;
+});
+
+// menu: destaca a seção visível
+const navLinks = [...document.querySelectorAll("#links a")];
+const spy = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) navLinks.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id)); }), {rootMargin:"-45% 0px -50% 0px"});
+["topo","servicos","portfolio","planos","sobre","contato"].forEach(id => spy.observe($(id)));
 
 // Salva o lead no Supabase quando config.js estiver preenchido. Falha aqui nunca bloqueia o WhatsApp.
 function saveLead(lead) {
   const c = window.SITE_CONFIG || {};
-  if (!c.supabaseUrl || !c.supabaseAnonKey || document.getElementById("fh").value) return;
+  if (!c.supabaseUrl || !c.supabaseAnonKey || $("fh").value) return;
   const body = { nome:lead.nome, whatsapp:lead.whatsapp, email:lead.email||null, negocio:lead.negocio||null, tipo:lead.tipo, investimento:lead.investimento, prazo:lead.prazo, mensagem:lead.mensagem||null, origem:lead.origem };
   fetch(c.supabaseUrl.replace(/\/$/,"") + "/rest/v1/leads", {
     method:"POST", keepalive:true,
@@ -296,13 +484,13 @@ function saveLead(lead) {
   }).catch(() => {});
 }
 
-document.getElementById("f").addEventListener("submit", e => {
+$("f").addEventListener("submit", e => {
   e.preventDefault();
-  const n = document.getElementById("fn"), ok = document.getElementById("ok");
-  const v = (id, max = 160) => document.getElementById(id).value.trim().slice(0, max);
-  if (!v("fn")) { ok.textContent = "Preencha seu nome para continuar."; n.focus(); return; }
-  if (v("fp").replace(/\D/g,"").length < 10) { ok.textContent = "Informe um WhatsApp com DDD."; document.getElementById("fp").focus(); return; }
-  const lead = { nome:v("fn").slice(0,120), whatsapp:v("fp",25), email:v("fe"), negocio:v("fb"), tipo:v("ft"), investimento:v("fv"), prazo:v("fd"), mensagem:v("fm",2000), origem:"site", criado:new Date().toISOString() };
+  const ok = $("ok");
+  const v = (id, max = 160) => $(id).value.trim().slice(0, max);
+  if (!v("fn")) { ok.textContent = "Preencha seu nome para continuar."; $("fn").focus(); return; }
+  if (v("fp").replace(/\D/g,"").length < 10) { ok.textContent = "Informe um WhatsApp com DDD."; $("fp").focus(); return; }
+  const lead = { nome:v("fn",120), whatsapp:v("fp",25), email:v("fe"), negocio:v("fb"), tipo:v("ft"), investimento:v("fv"), prazo:v("fd"), mensagem:v("fm",2000), origem:"site" };
   const t = `Olá! Meu nome é ${lead.nome}.\nWhatsApp: ${lead.whatsapp}${lead.email?"\nE-mail: "+lead.email:""}\nNegócio: ${lead.negocio || "-"}\nPreciso de: ${lead.tipo}\nInvestimento: ${lead.investimento}\nPrazo: ${lead.prazo}\n${lead.mensagem}`;
   const a = document.createElement("a"); a.href = waLink(t); a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove();
   ok.textContent = "Abrindo o WhatsApp com sua mensagem pronta.";
