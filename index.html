@@ -121,7 +121,7 @@ nav .btn{min-height:44px;padding:0 20px;font-size:15px;white-space:nowrap}
 .board .bar span{font:500 14px var(--body);color:var(--ink2)}
 .board table{width:100%;border-collapse:collapse}
 .board th{text-align:left;font-size:12.5px;font-weight:600;color:var(--ink2);padding:12px 20px 8px}
-.board td{padding:14px 20px;border-top:1px solid var(--line)}.board td:first-child{font-weight:600}
+.board td{padding:14px 20px;border-top:1px solid var(--line)}.board td:first-child{font-weight:600;white-space:nowrap}.board td:nth-child(3){white-space:nowrap}
 .st{display:inline-block;padding:4px 10px;border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap}
 .st.new{background:var(--or);color:var(--ink)}.st.talk{background:var(--soft);color:var(--ink)}.st.won{background:var(--ink);color:#fff}
 .board figcaption{padding:12px 20px;background:var(--soft);font-size:13px;color:var(--ink2)}
@@ -234,16 +234,16 @@ footer .r{margin-left:auto}
   </div>
   <div class="stage rv" aria-hidden="true">
     <div class="phone"><div class="screen">
-      <div class="top"><i>ss</i>Soft Solution · painel</div>
+      <div class="top"><i>+</i>Clínica Sorriso Prado</div>
       <div class="chat">
-        <div class="msg"><b>NOVO PEDIDO</b>Ana Paula Ribeiro<br>Doceria Ponto Doce<br>Landing page · este mês<small>09:14</small></div>
-        <div class="msg"><b>NOVO PEDIDO</b>Rafael Mendes<br>Mendes Auto Center<br>Site institucional<small>10:02</small></div>
-        <div class="msg me">Oi, Ana Paula! Vi seu pedido da Ponto Doce, já te mando a proposta.<small>10:05</small></div>
-        <div class="msg"><b>NOVO PEDIDO</b>Dra. Juliana Prado<br>Clínica Sorriso Prado<br>Site + painel de leads<small>11:30</small></div>
+        <div class="msg"><b>NOVA CONSULTA AGENDADA</b>Marina Costa<br>Limpeza · quinta, 14h<small>09:14</small></div>
+        <div class="msg"><b>NOVO PEDIDO DE ORÇAMENTO</b>Carlos Lima<br>Clareamento dental<small>10:02</small></div>
+        <div class="msg me">Oi, Marina! Sua consulta está confirmada para quinta às 14h.<small>10:05</small></div>
+        <div class="msg"><b>NOVA CONSULTA AGENDADA</b>Pedro Alves<br>Avaliação · sexta, 9h<small>11:30</small></div>
       </div>
     </div></div>
   </div>
-  <p class="note">Conversa ilustrativa: nomes e negócios fictícios, para mostrar como os pedidos chegam.</p>
+  <p class="note">Exemplo de uma clínica recebendo clientes pelo próprio site. Nomes fictícios.</p>
 </div></header>
 
 <section class="facts" aria-label="Destaques"><div class="wrap">
@@ -264,26 +264,26 @@ footer .r{margin-left:auto}
 
 <section class="panelsec" id="painel"><div class="wrap case">
   <div class="txt rv">
-    <p class="eyebrow">O case é este site</p>
-    <h2>Nenhum pedido esquecido no WhatsApp.</h2>
-    <p>Este site funciona do jeito que entregamos o seu: o formulário não some numa caixa de e-mail, ele vira uma lista organizada que você controla.</p>
+    <p class="eyebrow">Painel de pedidos</p>
+    <h2>Nenhum cliente esquecido no WhatsApp.</h2>
+    <p>Agendamento, venda ou pedido de orçamento: o que o seu cliente faz no site não some numa caixa de e-mail. Vira uma lista organizada que você controla.</p>
     <ol class="steps3">
-      <li><b>O cliente preenche</b><span>Nome, WhatsApp, o que precisa e para quando.</span></li>
+      <li><b>Seu cliente faz o pedido</b><span>Agenda, compra ou pede orçamento pelo site.</span></li>
       <li><b>Cai no painel e no seu e-mail</b><span>Salvo na hora, com data, status e anotações.</span></li>
-      <li><b>Você responde e acompanha</b><span>Marca quem já recebeu proposta e exporta a lista.</span></li>
+      <li><b>Você responde e acompanha</b><span>Confirma, marca o status e exporta a lista.</span></li>
     </ol>
   </div>
   <figure class="board rv" aria-label="Exemplo do painel de pedidos">
-    <div class="bar">Pedidos de orçamento <span>3 esta semana</span></div>
+    <div class="bar">Clínica Sorriso Prado <span>esta semana</span></div>
     <table>
-      <thead><tr><th>Cliente</th><th>Precisa de</th><th>Chegou</th><th>Status</th></tr></thead>
+      <thead><tr><th>Cliente</th><th>Pediu</th><th>Quando</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td>Ana Paula · Ponto Doce</td><td>Landing page</td><td>hoje</td><td><span class="st new">Novo</span></td></tr>
-        <tr><td>Rafael · Mendes Auto Center</td><td>Site institucional</td><td>ontem</td><td><span class="st talk">Em conversa</span></td></tr>
-        <tr><td>Juliana · Sorriso Prado</td><td>Leads + painel</td><td>seg.</td><td><span class="st won">Fechado</span></td></tr>
+        <tr><td>Marina Costa</td><td>Consulta de limpeza</td><td>qui, 14h</td><td><span class="st new">Novo</span></td></tr>
+        <tr><td>Carlos Lima</td><td>Orçamento de clareamento</td><td>hoje</td><td><span class="st talk">Em conversa</span></td></tr>
+        <tr><td>Pedro Alves</td><td>Avaliação</td><td>sex, 9h</td><td><span class="st won">Confirmado</span></td></tr>
       </tbody>
     </table>
-    <figcaption>Painel deste site, com nomes fictícios de exemplo.</figcaption>
+    <figcaption>Exemplo do painel de uma clínica, com nomes fictícios.</figcaption>
   </figure>
 </div></section>
 
