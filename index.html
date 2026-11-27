@@ -128,7 +128,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;
       <a class="btn wa" id="waHero" href="#">Falar no WhatsApp</a>
       <a class="btn" href="#planos">Ver planos</a>
     </div>
-    <div class="facts"><div><b>Celular primeiro</b>funciona em qualquer tela</div><div><b>Do zero ao ar</b>com domínio e hospedagem</div><div><b>Suporte</b>depois da entrega</div></div>
+    <div class="facts"><div><b>Celular primeiro</b>funciona em qualquer tela</div><div><b>Do zero ao ar</b>com domínio e hospedagem</div><div><b>Treinamento</b>você aprende a usar na entrega</div></div>
   </div>
   <div class="art" aria-hidden="true">
     <svg viewBox="0 0 600 440">
@@ -152,11 +152,11 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;
 </div></section>
 
 <section class="band alt" id="sobre"><div class="wrap about">
-  <div class="photo"><div class="pnum"><b>1:1</b><span>você fala direto com quem desenvolve o seu projeto</span></div><ul class="pfacts"><li>Juiz de Fora, MG</li><li>Atendimento online para todo o Brasil</li><li>Suporte depois da entrega</li></ul></div>
+  <div class="photo"><div class="pnum"><b>1:1</b><span>você fala direto com quem desenvolve o seu projeto</span></div><ul class="pfacts"><li>Juiz de Fora, MG</li><li>Atendimento online para todo o Brasil</li><li>Treinamento de uso na entrega</li></ul></div>
   <div>
     <h2>Quem faz o seu site</h2>
     <p class="lead">Sou Marcelo Alves, de Juiz de Fora (MG). Crio sites e sistemas para pequenas empresas, unindo visão de negócio e tecnologia.</p>
-    <p class="lead">Meu foco é simples: o site nasce pensado para trazer clientes, e não só para ficar bonito. Você fala direto comigo do primeiro contato até depois da entrega.</p>
+    <p class="lead">Meu foco é simples: o site nasce pensado para trazer clientes, e não só para ficar bonito. Você fala direto comigo do primeiro contato até a entrega.</p>
     <ul class="chips"><li>Visão de negócio</li><li>Node.js e TypeScript</li><li>PostgreSQL e APIs</li><li>Automação e IA</li><li>Captação de leads</li></ul>
   </div>
 </div></section>
@@ -234,7 +234,6 @@ const srv = [
   ["site","Site institucional","Apresente sua empresa, serviços e contatos com uma página profissional que passa confiança."],
   ["page","Landing page","Uma página focada em um produto ou campanha, feita para transformar visitas em contatos."],
   ["seo","Google e SEO básico","Seu site preparado para aparecer nas buscas e no Google Maps."],
-  ["fix","Manutenção","Atualizações de conteúdo, ajustes e segurança depois que o site está no ar."],
   ["code","Sistemas e programas","Ferramentas sob medida para organizar e automatizar o seu negócio.",true]
 ];
 document.getElementById("srv").innerHTML = srv.map(([i,t,d,s]) =>
@@ -252,7 +251,7 @@ document.getElementById("stp").innerHTML = stp.map(([t,d],i) =>
 
 const prc = [
   ["Essencial","Sob consulta","Para quem precisa marcar presença rápido.",["Landing page de uma página","Botão de WhatsApp","Adaptado para celular","Entrega rápida"]],
-  ["Profissional","Sob consulta","O mais pedido por pequenas empresas.",["Site com até 5 páginas","Formulário de contato","Google e SEO básico","Integração com redes sociais","30 dias de suporte"],true]
+  ["Profissional","Sob consulta","O mais pedido por pequenas empresas.",["Site com até 5 páginas","Formulário de contato","Google e SEO básico","Integração com redes sociais","Treinamento de uso"],true]
 ];
 document.getElementById("prc").innerHTML = prc.map(([n,p,f,l,top]) =>
   `<article class="plan${top?' top':''}"><h3>${n}</h3><div class="price">${p}</div><p class="for">${f}</p><ul>${l.map(x=>`<li>${x}</li>`).join("")}</ul><a class="btn${top?'':' solid'}" href="#contato" data-plan="${n}">Quero este</a></article>`).join("");
@@ -263,7 +262,7 @@ document.getElementById("dep").innerHTML = [1,2,3].map(n =>
 const faq = [
   ["Quanto tempo leva para o site ficar pronto?","Depende do tamanho do projeto. Uma landing page costuma levar poucos dias; sites maiores e sistemas levam mais. O prazo exato vai na proposta."],
   ["Preciso entender de tecnologia?","Não. Eu cuido de toda a parte técnica, do domínio à publicação, e explico o que for preciso."],
-  ["Posso atualizar o site depois?","Sim. Você pode pedir ajustes pelo plano de manutenção ou aprender a editar os textos sozinho."],
+  ["Posso atualizar o site depois?","Sim. Na entrega eu ensino você a editar textos e imagens por conta própria."],
   ["Como funciona o pagamento?","As condições são combinadas na proposta, com opção de parcelamento."]
 ];
 document.getElementById("faq").innerHTML = faq.map(([q,a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join("");
