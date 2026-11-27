@@ -71,7 +71,12 @@ a.pill{text-decoration:none;transition:border-color .2s}a.pill:hover{border-colo
 .pill .dot{position:relative;width:9px;height:9px;border-radius:50%;background:var(--or);flex:none}
 @media (prefers-reduced-motion:no-preference){.pill .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--or);animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}}
 @keyframes ping{75%,100%{transform:scale(2.4);opacity:0}}
-.hero h1{font-size:clamp(48px,7vw,92px);line-height:.92;letter-spacing:-.05em}
+.ask{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:560px}
+.ask a{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-decoration:none;background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:12px 16px;transition:border-color .2s,transform .2s}
+.ask a:hover{border-color:var(--or);transform:translateX(4px)}
+.ask .q{font-weight:600;font-size:16px;color:var(--ink)}
+.ask .a{font-size:14.5px;color:var(--ink2);white-space:nowrap}.ask .a b{color:var(--or-t)}
+.hero h1{font-size:clamp(44px,6.4vw,86px);line-height:.92;letter-spacing:-.05em}
 .lead{font-size:clamp(17px,1.4vw,19px);color:var(--ink2);max-width:30em}
 .act{display:flex;flex-wrap:wrap;gap:12px}
 .stage{grid-column:7/13;background:var(--or);border-radius:28px;padding:clamp(28px,4vw,48px);display:flex;align-items:center;justify-content:center;min-height:520px;position:relative;overflow:hidden}
@@ -334,8 +339,13 @@ footer .r{margin-left:auto}
 <header class="hero" id="topo"><div class="wrap">
   <div class="txt rv">
     <a class="pill" href="#contato"><span class="dot" aria-hidden="true"></span><span><b>Orçamento grátis</b> e sem compromisso</span></a>
-    <h1>Seu site trabalhando <span class="hl">enquanto você atende.</span></h1>
-    <p class="lead">Landing pages e sites que transformam visita em pedido de orçamento. Cada contato chega organizado, direto no seu painel e no seu WhatsApp.</p>
+    <h1>Seu negócio já tem <span class="hl">um site que vende?</span></h1>
+    <p class="lead">Responda com sinceridade. Para cada resposta, existe um formato certo:</p>
+    <ul class="ask" aria-label="Qual formato é para você">
+      <li><a href="#formatos"><span class="q">Fez anúncio e ninguém chamou?</span><span class="a"><b>Landing page</b> · a partir de R$ 800</span></a></li>
+      <li><a href="#formatos"><span class="q">Pesquisam seu nome e não te acham?</span><span class="a"><b>Site institucional</b> · a partir de R$ 2.000</span></a></li>
+      <li><a href="#formatos"><span class="q">Cliente some no meio do WhatsApp?</span><span class="a"><b>Site + painel</b> · a partir de R$ 3.500</span></a></li>
+    </ul>
     <div class="act">
       <a class="btn or" href="#contato">Quero um orçamento <svg aria-hidden="true"><use href="#arrow"/></svg></a>
       <a class="btn ghost" href="#formatos">Ver preços</a>
