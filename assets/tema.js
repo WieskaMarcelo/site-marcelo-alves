@@ -7,7 +7,7 @@
     btn.setAttribute("aria-pressed", dark ? "true" : "false");
     btn.setAttribute("aria-label", dark ? "Ativar modo claro" : "Ativar modo escuro");
     var m = document.querySelector('meta[name="theme-color"]');
-    if (m) m.setAttribute("content", dark ? "#0F0F0F" : "#FF4F1F");
+    if (m) m.setAttribute("content", dark ? "#0A0F12" : "#F5F8F9");
   }
   btn.addEventListener("click", function () {
     root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
