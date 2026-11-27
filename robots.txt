@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Sitemap: https://wieskamarcelo.github.io/site-marcelo-alves/sitemap.xml
