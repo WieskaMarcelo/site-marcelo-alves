@@ -91,10 +91,12 @@ nav .btn{min-height:44px;padding:0 20px;font-size:15px;white-space:nowrap}
 
 /* formatos */
 .fmt{border-top:2px solid var(--ink)}
-.row{display:grid;grid-template-columns:56px minmax(0,1fr) minmax(0,1fr) auto;gap:20px 32px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line)}
+.row{display:grid;grid-template-columns:56px minmax(0,1.4fr) minmax(0,1fr) auto;gap:20px 32px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line)}
 .row .n{font:700 18px var(--head);color:var(--or-t)}
 .row h3{font-size:clamp(28px,2.8vw,36px)}
-.row .for{color:var(--ink2);margin-top:8px;font-size:16px}
+.row .for{color:var(--ink2);margin-top:10px;font-size:16px;max-width:34em}
+.row .ideal{margin-top:8px;font-size:15px;font-weight:600;color:var(--ink)}
+.row.hot .ideal{color:var(--ink)}
 .row ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .row li{font-size:14px;font-weight:500;background:var(--soft);border-radius:999px;padding:6px 12px}
 .row .buy{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
@@ -256,7 +258,7 @@ footer .r{margin-left:auto}
 <section class="sec" id="formatos"><div class="wrap">
   <div class="intro rv">
     <div class="t"><p class="eyebrow">Formatos e preços</p><h2>Três formatos, <span class="hl">um objetivo:</span> trazer cliente.</h2></div>
-    <p>As faixas variam conforme o tamanho do projeto; o valor exato vai na proposta. Escolha um formato e o pedido já chega com ele marcado.</p>
+    <p>Não sabe qual escolher? Leia o que cada um faz ou peça ajuda no WhatsApp. O valor exato vai na proposta.</p>
   </div>
   <div class="fmt" id="prc"></div>
   <p class="terms rv"><span><b>Pagamento:</b> 50% na entrada e 50% na entrega.</span><span><b>Revisões:</b> 2 rodadas inclusas.</span></p>
@@ -321,7 +323,7 @@ footer .r{margin-left:auto}
     <label>Seu nome<input id="fn" autocomplete="name" required></label>
     <div class="two"><label>WhatsApp<input id="fp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(00) 00000-0000" required></label><label>E-mail<input id="fe" type="email" autocomplete="email" placeholder="opcional"></label></div>
     <label>Tipo de negócio<input id="fb" placeholder="Ex.: salão de beleza, loja, consultório"></label>
-    <label>O que você precisa<select id="ft"><option>Landing page</option><option>Site institucional</option><option>Site com leads e painel</option><option>Ainda não sei</option></select></label>
+    <label>O que você precisa<select id="ft"><option>Landing page</option><option>Site institucional</option><option value="Site com leads e painel">Site + painel de clientes</option><option>Ainda não sei</option></select></label>
     <div class="two"><label>Investimento previsto<select id="fv"><option>Ainda não sei</option><option>Até R$ 2.000</option><option>R$ 2.000 a R$ 4.000</option><option>R$ 4.000 a R$ 6.000</option><option>Acima de R$ 6.000</option></select></label><label>Para quando<select id="fd"><option>Sem pressa</option><option>Este mês</option><option>Nas próximas semanas</option><option>Urgente</option></select></label></div>
     <label>Mensagem<textarea id="fm" placeholder="Conte sua ideia"></textarea></label>
     <input id="fh" name="empresa_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
@@ -353,14 +355,14 @@ document.documentElement.classList.add("js");
 const $ = id => document.getElementById(id);
 
 const prc = [
-  ["Landing page","Uma página focada em transformar visita em contato.","R$ 800 – 3.000",["Página única","Celular","Formulário","WhatsApp"],false,"Landing page"],
-  ["Site institucional","De 4 a 8 páginas para passar confiança a quem pesquisa você.","R$ 2.000 – 6.000",["4 a 8 páginas","Google e SEO básico","Domínio configurado","Formulário"],false,"Site institucional"],
-  ["Site + painel de leads","Cada pedido de orçamento salvo num painel só seu. Igual a este site.","R$ 3.500 – 8.000",["Site completo","Pedidos salvos","Status e anotações","Exportação","Aviso por e-mail"],true,"Site com leads e painel"]
+  ["Landing page","É uma página única, como um panfleto digital: apresenta um serviço ou uma oferta e leva a pessoa a chamar você no WhatsApp ou pedir orçamento.","Ideal para divulgar um serviço, uma promoção ou receber quem chega pelos seus anúncios.","R$ 800 – 3.000",["Página única","Funciona no celular","Formulário","Botão de WhatsApp"],false,"Landing page"],
+  ["Site institucional","É o endereço da sua empresa na internet, com várias páginas: quem vocês são, serviços, fotos, localização e contato.","Ideal para quem quer ser encontrado no Google e passar confiança a quem pesquisa o seu nome.","R$ 2.000 – 6.000",["4 a 8 páginas","Aparece no Google","Domínio configurado","Formulário"],false,"Site institucional"],
+  ["Site + painel de clientes","É um site completo com uma área só sua, o painel, onde cada agendamento, venda ou pedido de orçamento feito no site fica salvo, com data e situação.","Ideal para quem recebe muitos contatos e quer acompanhar cada cliente até fechar, sem perder ninguém.","R$ 3.500 – 8.000",["Site completo","Pedidos salvos","Status e anotações","Lista exportável","Aviso por e-mail"],true,"Site com leads e painel"]
 ];
-$("prc").innerHTML = prc.map(([n,f,p,l,hot,o],i) =>
+$("prc").innerHTML = prc.map(([n,f,ideal,p,l,hot,o],i) =>
   `<article class="row rv${hot?" hot":""}">
     <span class="n">0${i+1}</span>
-    <div><h3>${n}${hot?'<span class="tag">o mais pedido</span>':""}</h3><p class="for">${f}</p></div>
+    <div><h3>${n}${hot?'<span class="tag">o mais pedido</span>':""}</h3><p class="for">${f}</p><p class="ideal">${ideal}</p></div>
     <ul>${l.map(x=>`<li>${x}</li>`).join("")}</ul>
     <div class="buy"><p class="price">${p}<small>faixa de preço</small></p><a class="btn" href="#contato" data-plan="${n}" data-opt="${o}">Quero este</a></div>
   </article>`).join("");
