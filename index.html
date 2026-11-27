@@ -192,6 +192,28 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
 .extra>div{display:grid;gap:6px;padding:20px 22px;border-radius:14px;border:1px solid var(--line);font-size:15px}
 .extra b{font-size:16px}.extra span{color:var(--soft)}.extra strong{color:#fff;font-weight:700;white-space:nowrap}
 .from{display:block;font-size:13px;font-weight:500;opacity:.75;margin-bottom:2px;font-family:inherit;letter-spacing:0}
+
+/* sobre v2 */
+.ab-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px 56px;align-items:end;margin-bottom:40px}
+.ab-intro{display:grid;gap:20px;justify-items:start}.ab-intro p{color:#c3cae6;font-size:16px}
+.bento{display:grid;grid-template-columns:minmax(0,1.25fr) repeat(2,minmax(0,1fr));grid-template-rows:auto auto;gap:18px}
+.bento .ide{grid-row:span 2;margin:0;height:100%;display:flex;flex-direction:column}
+.bento .ide pre{flex:1}
+.ide .out{display:grid;gap:4px;padding:14px 20px 18px;border-top:1px solid #ffffff10;background:#050918;font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;color:#8c95bd}.ide .out b{color:#5fd0ff;font-weight:400}.ide .out .okl{color:#3ee08a}
+.bento .ide .tb span{margin-left:10px;font:500 12px ui-monospace,monospace;color:#8c95bd}
+.pil{position:relative;padding:24px;border-radius:18px;background:linear-gradient(180deg,#0f1840,#0a1030);border:1px solid var(--line);overflow:hidden;display:grid;gap:10px;align-content:start;transition:border-color .25s,transform .25s}
+.pil::before{content:"";position:absolute;inset:0 0 auto;height:1px;background:linear-gradient(90deg,transparent,#4f8bff,transparent);opacity:.8}
+.pil::after{content:"";position:absolute;right:-60px;top:-60px;width:160px;height:160px;border-radius:50%;background:radial-gradient(closest-side,#7b3bff2e,transparent);pointer-events:none}
+.pil:hover{border-color:#3d5bd6;transform:translateY(-3px)}
+.pil .pi{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;color:#5fd0ff;background:#2f6bff1f;border:1px solid #2f6bff55;box-shadow:0 0 18px #2f6bff33;margin-bottom:6px}
+.pil .pi svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pil h3{font-size:17px}.pil p{color:var(--soft);font-size:14.5px;line-height:1.5}
+.stack{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:26px}
+.stack span{font-size:13.5px;font-weight:600;color:#d3d9f3;padding:7px 14px;border-radius:999px;border:1px solid #2a3670;background:#0d143480}
+.stack .st-l{border:0;background:none;padding-left:0;color:#7fa6ff;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+@media(max-width:1000px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}.bento .ide{grid-row:auto;grid-column:1/-1}}
+@media(max-width:760px){.ab-head{grid-template-columns:minmax(0,1fr);align-items:start}}
+@media(max-width:560px){.bento{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -286,9 +308,15 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
   <div class="cards" id="srv"></div>
 </div></section>
 
-<section class="band" id="sobre" style="background:radial-gradient(700px 400px at 0% 60%,#2f6bff1f,transparent 70%)"><div class="wrap about">
-  <div class="ide" aria-hidden="true">
-    <div class="tb"><i></i><i></i><i></i></div>
+<section class="band" id="sobre" style="background:radial-gradient(700px 400px at 0% 60%,#2f6bff1f,transparent 70%)"><div class="wrap">
+  <div class="ab-head">
+    <div><div class="kicker">SOBRE</div><h2>Visão de negócio, tecnologia e <span class="hl">foco em resultado</span></h2></div>
+    <div class="ab-intro"><p>Sites, sistemas e automações para pequenas empresas. Cada projeto nasce pensado para trazer clientes, e você fala direto com quem desenvolve, do primeiro contato até a entrega.</p>
+    <a class="btn out" href="#contato"><span class="bl">Vamos conversar</span><svg class="ba"><use href="#arrow"/></svg></a></div>
+  </div>
+  <div class="bento">
+    <div class="ide" aria-hidden="true">
+      <div class="tb"><i></i><i></i><i></i><span>lead.ts</span></div>
 <pre><span class="c">// lead chegou pelo site</span>
 <span class="k">export async function</span> <span class="f">novoLead</span>(dados) {
   <span class="k">const</span> lead = <span class="k">await</span> db.<span class="f">insert</span>(<span class="s">"leads"</span>, dados);
@@ -298,19 +326,14 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
 
 <span class="c">// negócio + tecnologia</span>
 <span class="k">const</span> foco = [<span class="s">"vendas"</span>, <span class="s">"código"</span>, <span class="s">"resultado"</span>];</pre>
+      <div class="out"><span><b>$</b> npm run deploy</span><span class="okl">✓ site publicado</span><span class="okl">✓ formulário conectado ao painel</span><span class="okl">✓ novo lead recebido</span></div>
+    </div>
+    <article class="pil"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><h3>Negócio em primeiro lugar</h3><p>Antes do código, entendo como você vende. O site é pensado para gerar contato, não só para ficar bonito.</p></article>
+    <article class="pil"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/></svg></span><h3>Feito sob medida</h3><p>Nada de modelo pronto: layout, textos e funções montados para o seu negócio.</p></article>
+    <article class="pil"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></span><h3>Contato direto</h3><p>Você fala com quem desenvolve, sem intermediários e sem telefone sem fio.</p></article>
+    <article class="pil"><span class="pi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><h3>Perto e online</h3><p>Juiz de Fora (MG) e atendimento online para todo o Brasil.</p></article>
   </div>
-  <div class="txt">
-    <div class="kicker">SOBRE</div>
-    <h2>Visão de negócio, tecnologia e foco em resultado</h2>
-    <p>Sou Marcelo Alves, de Juiz de Fora (MG). Crio sites, sistemas e automações para pequenas empresas, unindo visão de negócio e tecnologia.</p>
-    <p>Cada projeto nasce pensado para trazer clientes, e você fala direto comigo do primeiro contato até a entrega.</p>
-    <p><a class="btn out" href="#contato"><span class="bl">Vamos conversar</span><svg class="ba"><use href="#arrow"/></svg></a></p>
-  </div>
-  <div class="stats">
-    <div><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4"/></svg><span>Você fala direto com quem desenvolve, sem intermediários</span></div>
-    <div><svg viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13 5l-2 14"/></svg><span>Node.js, TypeScript, PostgreSQL, APIs e IA</span></div>
-    <div><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Atendimento próximo em Juiz de Fora e online para todo o Brasil</span></div>
-  </div>
+  <div class="stack"><span class="st-l">Tecnologias</span><span>Node.js</span><span>TypeScript</span><span>PostgreSQL</span><span>APIs</span><span>Inteligência artificial</span></div>
 </div></section>
 
 <section class="band" id="como" style="padding-top:0"><div class="wrap">
