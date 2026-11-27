@@ -71,11 +71,13 @@ a.pill{text-decoration:none;transition:border-color .2s}a.pill:hover{border-colo
 .pill .dot{position:relative;width:9px;height:9px;border-radius:50%;background:var(--or);flex:none}
 @media (prefers-reduced-motion:no-preference){.pill .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--or);animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}}
 @keyframes ping{75%,100%{transform:scale(2.4);opacity:0}}
-.ask{list-style:none;margin:0;padding:0;display:grid;gap:8px;max-width:560px}
-.ask a{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-decoration:none;background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:12px 16px;transition:border-color .2s,transform .2s}
-.ask a:hover{border-color:var(--or);transform:translateX(4px)}
-.ask .q{font-weight:600;font-size:16px;color:var(--ink)}
-.ask .a{font-size:14.5px;color:var(--ink2);white-space:nowrap}.ask .a b{color:var(--or-t)}
+.ask{list-style:none;margin:0;padding:0;max-width:580px;border-top:1.5px solid var(--ink)}
+.ask a{display:grid;grid-template-columns:44px 1fr 28px;grid-template-rows:auto auto;column-gap:8px;align-items:center;text-decoration:none;padding:14px 4px;border-bottom:1px solid var(--line);transition:background .2s,padding .25s}
+.ask .n{grid-row:1/3;font:700 15px var(--head);color:var(--or-t);letter-spacing:.02em}
+.ask .q{font:600 18px/1.25 var(--head);letter-spacing:-.02em;color:var(--ink)}
+.ask .a{grid-column:2;font-size:14px;color:var(--ink2);white-space:nowrap}.ask .a b{color:var(--ink);font-weight:700;margin-right:6px}
+.ask .go{grid-row:1/3;grid-column:3;width:20px;height:20px;color:var(--ink2);transition:transform .25s,color .25s}
+.ask a:hover{padding-left:10px}.ask a:hover .go{transform:translateX(4px);color:var(--or)}
 .hero h1{font-size:clamp(44px,6.4vw,86px);line-height:.92;letter-spacing:-.05em}
 .lead{font-size:clamp(17px,1.4vw,19px);color:var(--ink2);max-width:30em}
 .act{display:flex;flex-wrap:wrap;gap:12px}
@@ -90,6 +92,9 @@ a.pill{text-decoration:none;transition:border-color .2s}a.pill:hover{border-colo
 .scene{position:absolute;left:0;top:0;width:480px;height:560px;transform-origin:0 0;transform:scale(var(--k,1));color:#111;font-family:var(--body)}
 .scene p{margin:0}.scene i{font-style:normal}
 .dots{position:relative;z-index:1;display:flex;gap:4px;justify-content:center;margin-top:14px}
+.pause{width:44px;height:44px;border:0;background:none;cursor:pointer;display:grid;place-items:center;color:#111;margin-right:4px}
+.pause svg{width:18px;height:18px}.pause .i-play{display:none}.pause[aria-pressed="true"] .i-play{display:block}.pause[aria-pressed="true"] .i-pause{display:none}
+.pause:focus-visible{outline:3px solid #111;outline-offset:-6px;border-radius:12px}
 .dot{width:44px;height:44px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
 .dot::before{content:"";width:10px;height:10px;border-radius:999px;background:rgba(17,17,17,.3);transition:width .3s,background .3s}
 .dot.on::before{width:30px;background:#111}
@@ -333,22 +338,22 @@ footer .r{margin-left:auto}
   <a class="mark" href="#topo" aria-label="Soft Solution, início">soft<i>/</i>solution</a>
   <div class="links" id="links"><a href="#publicos">Para quem</a><a href="#formatos">Formatos</a><a href="#painel">Painel</a><a href="#como">Como funciona</a><a href="#porque">Por que nós</a><a href="#contato">Contato</a></div>
   <button class="theme" id="tema" type="button" aria-pressed="false" aria-label="Ativar modo escuro"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-  <a class="btn" href="#contato">Pedir orçamento</a>
+  <a class="btn or" href="#contato">Pedir orçamento</a>
 </div></nav>
 
 <header class="hero" id="topo"><div class="wrap">
   <div class="txt rv">
     <a class="pill" href="#contato"><span class="dot" aria-hidden="true"></span><span><b>Orçamento grátis</b> e sem compromisso</span></a>
     <h1>Seu negócio já tem <span class="hl">um site que vende?</span></h1>
-    <p class="lead">Responda com sinceridade. Para cada resposta, existe um formato certo:</p>
-    <ul class="ask" aria-label="Qual formato é para você">
-      <li><a href="#formatos"><span class="q">Fez anúncio e ninguém chamou?</span><span class="a"><b>Landing page</b> · a partir de R$ 800</span></a></li>
-      <li><a href="#formatos"><span class="q">Pesquisam seu nome e não te acham?</span><span class="a"><b>Site institucional</b> · a partir de R$ 2.000</span></a></li>
-      <li><a href="#formatos"><span class="q">Cliente some no meio do WhatsApp?</span><span class="a"><b>Site + painel</b> · a partir de R$ 3.500</span></a></li>
-    </ul>
+    <p class="lead">Qual dessas é a sua situação? Cada uma tem um formato certo.</p>
+    <ol class="ask" aria-label="Escolha o formato pela sua situação">
+      <li><a href="#contato" data-fmt="Landing page"><span class="n">01</span><span class="q">Fez anúncio e ninguém chamou?</span><span class="a"><b>Landing page</b> a partir de R$ 800</span><svg class="go" aria-hidden="true"><use href="#arrow"/></svg></a></li>
+      <li><a href="#contato" data-fmt="Site institucional"><span class="n">02</span><span class="q">Pesquisam seu nome e não te acham?</span><span class="a"><b>Site institucional</b> a partir de R$ 2.000</span><svg class="go" aria-hidden="true"><use href="#arrow"/></svg></a></li>
+      <li><a href="#contato" data-fmt="Site com leads e painel"><span class="n">03</span><span class="q">Cliente some no meio do WhatsApp?</span><span class="a"><b>Site + painel</b> a partir de R$ 3.500</span><svg class="go" aria-hidden="true"><use href="#arrow"/></svg></a></li>
+    </ol>
     <div class="act">
       <a class="btn or" href="#contato">Quero um orçamento <svg aria-hidden="true"><use href="#arrow"/></svg></a>
-      <a class="btn ghost" href="#formatos">Ver preços</a>
+      <a class="btn ghost" href="https://wa.me/5532998282452?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#wa"/></svg>Chamar no WhatsApp</a>
     </div>
   </div>
   <div class="stage rv" role="region" aria-roledescription="carrossel" aria-label="Exemplos de uma clínica recebendo clientes pelo site">
@@ -385,7 +390,7 @@ footer .r{margin-left:auto}
    <div style="background:#FF4F1F;border-radius:14px;padding:12px"><p style="font:700 30px var(--head)">0</p><p style="font-size:12px">cliente esquecido</p></div></div>
   <div style="padding:0 20px 8px;font-size:13px"><div style="display:grid;grid-template-columns:1fr auto;padding:11px 0;border-top:1px solid #E6E6E2"><div><b>Marina Costa</b><br><span style="color:#666">Limpeza · qui, 14h</span></div><span style="align-self:center;background:#FF4F1F;font-weight:700;border-radius:999px;padding:4px 10px;font-size:12px">Novo</span></div><div style="display:grid;grid-template-columns:1fr auto;padding:11px 0;border-top:1px solid #E6E6E2"><div><b>Carlos Lima</b><br><span style="color:#666">Orçamento de clareamento</span></div><span style="align-self:center;background:#F3F3F0;font-weight:700;border-radius:999px;padding:4px 10px;font-size:12px">Em conversa</span></div><div style="display:grid;grid-template-columns:1fr auto;padding:11px 0;border-top:1px solid #E6E6E2"><div><b>Pedro Alves</b><br><span style="color:#666">Avaliação · sex, 9h</span></div><span style="align-self:center;background:#111;color:#fff;font-weight:700;border-radius:999px;padding:4px 10px;font-size:12px">Confirmado</span></div></div></div>
  <div style="position:absolute;right:4px;top:22px;background:#111;color:#fff;border-radius:16px;padding:12px 14px;display:flex;gap:10px;align-items:center;font-size:13px;box-shadow:0 14px 30px rgba(0,0,0,.35)"><i style="width:9px;height:9px;border-radius:50%;background:#FF4F1F"></i><span><b>Nova consulta</b> · agora</span></div></div></div></div></div>
-    <div class="dots"><button type="button" class="dot on" aria-label="Mostrar exemplo 1: Notificações" aria-current="true"></button><button type="button" class="dot" aria-label="Mostrar exemplo 2: Site e painel"></button><button type="button" class="dot" aria-label="Mostrar exemplo 3: Passo a passo"></button><button type="button" class="dot" aria-label="Mostrar exemplo 4: Resultados"></button></div>
+    <div class="dots"><button type="button" class="pause" aria-label="Pausar troca automática" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pause" d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path class="i-play" d="M8 5l11 7-11 7z" fill="currentColor"/></svg></button><button type="button" class="dot on" aria-label="Mostrar exemplo 1: Notificações" aria-current="true"></button><button type="button" class="dot" aria-label="Mostrar exemplo 2: Site e painel"></button><button type="button" class="dot" aria-label="Mostrar exemplo 3: Passo a passo"></button><button type="button" class="dot" aria-label="Mostrar exemplo 4: Resultados"></button></div>
   </div>
   <p class="note" id="carcap" data-caps="O aviso chega no seu celular assim que o cliente agenda.|O cliente agenda no site e o pedido cai no seu painel.|Do site ao WhatsApp: nenhum cliente fica sem resposta.|Você vê quantos pedidos chegaram e quantos viraram consulta." aria-live="polite">O aviso chega no seu celular assim que o cliente agenda. Exemplo com nomes fictícios.</p>
 </div></header>
@@ -692,7 +697,7 @@ $("f").addEventListener("submit", e => {
   const cap=document.getElementById("carcap"), caps=cap.dataset.caps.split("|");
   const fit=()=>car.style.setProperty("--k",car.clientWidth/480);
   fit(); if(window.ResizeObserver) new ResizeObserver(fit).observe(car); else addEventListener("resize",fit);
-  let i=0, timer=null, paused=false;
+  let i=0, timer=null, paused=false, stopped=false; const pb=stage.querySelector(".pause");
   const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
   function go(n,user){
     const prev=i; i=(n+slides.length)%slides.length; if(prev===i) return;
@@ -701,7 +706,9 @@ $("f").addEventListener("submit", e => {
     cap.textContent=caps[i]+" Exemplo com nomes fictícios.";
     if(user) restart();
   }
-  function restart(){clearInterval(timer); if(!reduce&&!paused) timer=setInterval(()=>go(i+1),6000);}
+  function restart(){clearInterval(timer); if(!reduce&&!paused&&!stopped) timer=setInterval(()=>go(i+1),6000);}
+  if(reduce){stopped=true;pb.setAttribute("aria-pressed","true");pb.setAttribute("aria-label","Retomar troca automática");}
+  pb.addEventListener("click",()=>{stopped=!stopped;pb.setAttribute("aria-pressed",stopped?"true":"false");pb.setAttribute("aria-label",stopped?"Retomar troca automática":"Pausar troca automática");if(stopped)clearInterval(timer);else{paused=false;restart();}});
   dots.forEach((d,k)=>d.addEventListener("click",()=>go(k,true)));
   stage.addEventListener("mouseenter",()=>{paused=true;clearInterval(timer)});
   stage.addEventListener("mouseleave",()=>{paused=false;restart()});
@@ -713,6 +720,12 @@ $("f").addEventListener("submit", e => {
   car.addEventListener("pointerup",e=>{if(x0===null)return;const dx=e.clientX-x0;x0=null;if(Math.abs(dx)>40)go(i+(dx<0?1:-1),true)});
   restart();
 })();
+
+/* perguntas do topo: abrem o formulário com o formato marcado */
+document.querySelectorAll(".ask a[data-fmt]").forEach(a=>a.addEventListener("click",()=>{
+  const sel=document.getElementById("ft"); if(sel){[...sel.options].forEach(o=>{if((o.value||o.text)===a.dataset.fmt)sel.value=o.value||o.text});}
+  setTimeout(()=>{const n=document.getElementById("fn"); if(n) n.focus({preventScroll:true});},600);
+}));
 </script>
 </body>
 </html>
