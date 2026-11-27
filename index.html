@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://wieskamarcelo.github.io/site-marcelo-alves/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "name": "Soft Solution", "description": "Criação de sites, landing pages e sites com painel de clientes para pequenas empresas.", "url": "https://wieskamarcelo.github.io/site-marcelo-alves/", "image": "https://wieskamarcelo.github.io/site-marcelo-alves/assets/og-image.png", "email": "softsolutionia@gmail.com", "telephone": "+55 32 99828-2452", "areaServed": ["Juiz de Fora", "Brasil"], "address": {"@type": "PostalAddress", "addressLocality": "Juiz de Fora", "addressRegion": "MG", "addressCountry": "BR"}, "priceRange": "R$ 800 - R$ 8.000"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto tempo leva para ficar pronto?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do tamanho do projeto. Uma landing page costuma levar poucos dias; sites institucionais e com painel levam mais. O prazo exato vai na proposta."}}, {"@type": "Question", "name": "Preciso entender de tecnologia?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Cuidamos da parte técnica, do domínio à publicação, e explicamos o que for preciso."}}, {"@type": "Question", "name": "Como funciona o pagamento?", "acceptedAnswer": {"@type": "Answer", "text": "50% na entrada e 50% na entrega. Todo projeto inclui 2 rodadas de revisão."}}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "ProfessionalService", "name": "Soft Solution", "description": "Criação de sites, landing pages e sites com painel de clientes para pequenas empresas.", "url": "https://wieskamarcelo.github.io/site-marcelo-alves/", "image": "https://wieskamarcelo.github.io/site-marcelo-alves/assets/og-image.png", "email": "softsolutionia@gmail.com", "telephone": "+55 32 99828-2452", "areaServed": ["Juiz de Fora", "Brasil"], "address": {"@type": "PostalAddress", "addressLocality": "Juiz de Fora", "addressRegion": "MG", "addressCountry": "BR"}, "priceRange": "R$ 800 - R$ 8.000"}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto tempo leva para ficar pronto?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do tamanho do projeto. Uma landing page costuma levar poucos dias; sites institucionais e com painel levam mais. O prazo exato vai na proposta."}}, {"@type": "Question", "name": "Preciso entender de tecnologia?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Cuidamos da parte técnica, do domínio à publicação, e explicamos o que for preciso."}}, {"@type": "Question", "name": "Como funciona o pagamento?", "acceptedAnswer": {"@type": "Answer", "text": "50% na entrada e 50% na entrega. Todo projeto inclui 2 rodadas de revisão."}}, {"@type": "Question", "name": "Vocês fazem sites para clínicas e advogados?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, seguindo as regras de publicidade de cada conselho (CFM, CFO e OAB): sem promessa de resultado e com conteúdo informativo. Você revisa e aprova todos os textos."}}, {"@type": "Question", "name": "O que acontece com os dados que eu envio?", "acceptedAnswer": {"@type": "Answer", "text": "Usamos só para responder ao seu pedido e preparar a proposta. Nada é vendido ou compartilhado para propaganda. Veja a política de privacidade."}}]}]}</script>
 <meta name="theme-color" content="#FF4F1F">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -145,8 +145,10 @@ nav .btn{min-height:44px;padding:0 20px;font-size:15px;white-space:nowrap}
 .promise li:first-child{background:var(--or);border-color:var(--or)}
 .promise b{font:700 19px var(--head);letter-spacing:-.02em}.promise span{color:var(--ink2);font-size:15.5px}
 .promise li:first-child span{color:var(--ink)}
-.stack{margin-top:8px;display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:var(--ink2);align-items:center}
-.stack span{background:var(--soft);border-radius:999px;padding:6px 12px;color:var(--ink);font-weight:500}
+.why .t .stack{margin-top:4px;font-size:15px;color:var(--ink2)}
+.consent{font-size:13.5px;color:var(--ink2)}.consent a{color:var(--ink)}
+.tile .more{font-size:15px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.tile .more:hover{color:var(--ink)}.tile.dark .more:hover{color:var(--or)}
 
 /* contato */
 .contact{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:48px 24px;align-items:start}
@@ -288,8 +290,8 @@ footer .r{margin-left:auto}
     <p>Clínica, salão, loja ou prestador de serviço: o site é pensado para o jeito que o seu cliente compra, agenda ou pede orçamento.</p>
   </div>
   <div class="mural rv">
-    <article class="tile big"><span class="kind">Agendamento</span><h3>Clínicas e consultórios</h3><p>Dentistas, fisioterapia, psicologia e estética. O paciente marca a consulta pelo site, e você confirma sem ficar trocando mensagem.</p><span class="ping"><i></i>Nova consulta agendada pelo site</span></article>
-    <article class="tile dark"><span class="kind">Agendamento</span><h3>Salões e barbearias</h3><p>O cliente escolhe o horário pelo site e tudo fica organizado num painel, sem o WhatsApp lotado no meio do dia.</p><span class="ping"><i></i>Novo horário: corte e escova, 14h</span></article>
+    <article class="tile big"><span class="kind">Agendamento</span><h3>Clínicas e consultórios</h3><p>Dentistas, fisioterapia, psicologia e estética. O paciente marca a consulta pelo site, e você confirma sem ficar trocando mensagem.</p><a class="more" href="clinicas.html">Ver site para clínicas →</a><span class="ping"><i></i>Nova consulta agendada pelo site</span></article>
+    <article class="tile dark"><span class="kind">Agendamento</span><h3>Salões e barbearias</h3><p>O cliente escolhe o horário pelo site e tudo fica organizado num painel, sem o WhatsApp lotado no meio do dia.</p><a class="more" href="saloes.html">Ver site para salões →</a><span class="ping"><i></i>Novo horário: corte e escova, 14h</span></article>
     <article class="tile sm"><span class="kind">Orçamento</span><h3>Prestadores de serviço</h3><p>Eletricista, reformas, marcenaria e ar-condicionado.</p><span class="ping"><i></i>Novo pedido de orçamento</span></article>
     <article class="tile sm"><span class="kind">Venda</span><h3>Lojas e ateliês</h3><p>Vitrine dos produtos e pedido direto no WhatsApp.</p><span class="ping"><i></i>Nova venda pelo site</span></article>
     <article class="tile sm"><span class="kind">Agendamento</span><h3>Pet shops e veterinários</h3><p>Banho, tosa e consulta marcados pelo site.</p><span class="ping"><i></i>Banho e tosa: sábado, 10h</span></article>
@@ -348,7 +350,7 @@ footer .r{margin-left:auto}
     <p class="eyebrow">Por que nós</p>
     <h2>Antes do código, <span class="hl">como você vende.</span></h2>
     <p>Antes de abrir o editor, entendemos quem é o seu cliente, por onde ele chega e o que faz ele fechar. O layout, os textos e as funções saem disso, não de um modelo pronto.</p>
-    <div class="stack">Feito com <span>Node.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Supabase</span></div>
+    <p class="stack">Por trás, a mesma tecnologia usada por grandes empresas: rápida, segura e fácil de manter.</p>
   </div>
   <ul class="promise rv">
     <li><b>Você aprova cada etapa</b><span>Nada vai ao ar sem o seu ok.</span></li>
@@ -377,6 +379,7 @@ footer .r{margin-left:auto}
     <label>Mensagem<textarea id="fm" placeholder="Conte sua ideia"></textarea></label>
     <input id="fh" name="empresa_site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
     <button class="btn or" type="submit">Enviar pedido <svg aria-hidden="true"><use href="#arrow"/></svg></button>
+    <p class="consent">Seus dados são usados só para responder ao pedido. Veja a <a href="privacidade.html">política de privacidade</a>.</p>
     <p id="ok" role="status"></p>
   </form>
 </div></section>
@@ -392,6 +395,9 @@ footer .r{margin-left:auto}
   <a class="mark" href="#topo">soft<i>/</i>solution</a>
   <a href="mailto:softsolutionia@gmail.com">softsolutionia@gmail.com</a>
   <a href="https://wa.me/5532998282452" target="_blank" rel="noopener">WhatsApp (32) 99828-2452</a>
+  <a href="clinicas.html">Sites para clínicas</a>
+  <a href="saloes.html">Sites para salões</a>
+  <a href="privacidade.html">Privacidade</a>
   <span class="r">© 2026 Soft Solution</span>
 </div></footer>
 
@@ -425,11 +431,28 @@ const stp = [
 $("stp").innerHTML = stp.map(([t,d],i) => `<div class="step"><span class="k">${i+1}</span><h3>${t}</h3><p>${d}</p></div>`).join("");
 
 const faq = [
-  ["Quanto tempo leva para ficar pronto?","Depende do tamanho do projeto. Uma landing page costuma levar poucos dias; sites institucionais e com painel levam mais. O prazo exato vai na proposta."],
-  ["Preciso entender de tecnologia?","Não. Cuidamos da parte técnica, do domínio à publicação, e explicamos o que for preciso."],
-  ["Como funciona o pagamento?","50% na entrada e 50% na entrega. Todo projeto inclui 2 rodadas de revisão."]
+  [
+    "Quanto tempo leva para ficar pronto?",
+    "Depende do tamanho do projeto. Uma landing page costuma levar poucos dias; sites institucionais e com painel levam mais. O prazo exato vai na proposta."
+  ],
+  [
+    "Preciso entender de tecnologia?",
+    "Não. Cuidamos da parte técnica, do domínio à publicação, e explicamos o que for preciso."
+  ],
+  [
+    "Como funciona o pagamento?",
+    "50% na entrada e 50% na entrega. Todo projeto inclui 2 rodadas de revisão."
+  ],
+  [
+    "Vocês fazem sites para clínicas e advogados?",
+    "Sim, seguindo as regras de publicidade de cada conselho (CFM, CFO e OAB): sem promessa de resultado e com conteúdo informativo. Você revisa e aprova todos os textos."
+  ],
+  [
+    "O que acontece com os dados que eu envio?",
+    "Usamos só para responder ao seu pedido e preparar a proposta. Nada é vendido ou compartilhado para propaganda. Veja a política de privacidade."
+  ]
 ];
-$("faq").innerHTML = faq.map(([q,a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join("");
+$("faq").innerHTML = faq.map(([q,a]) => `<details><summary>${q}</summary><p>${a.replace("política de privacidade",'<a href="privacidade.html">política de privacidade</a>')}</p></details>`).join("");
 
 document.addEventListener("click", e => {
   const p = e.target.closest("[data-plan]"); if (p) $("fm").value = "Tenho interesse no plano " + p.dataset.plan + ".";
