@@ -214,6 +214,10 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
 @media(max-width:1000px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}.bento .ide{grid-row:auto;grid-column:1/-1}}
 @media(max-width:760px){.ab-head{grid-template-columns:minmax(0,1fr);align-items:start}}
 @media(max-width:560px){.bento{grid-template-columns:minmax(0,1fr)}}
+
+/* fundo de circuito: só no topo */
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#060a1c 0%,#060a1cd9 30%,transparent 65%),linear-gradient(180deg,transparent 55%,#060a1c 100%),url(circuito.svg) 70% 50%/cover no-repeat;opacity:.9}
+.hero .waves{opacity:.45}
 </style>
 </head>
 <body>
