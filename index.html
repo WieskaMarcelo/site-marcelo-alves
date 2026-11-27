@@ -65,7 +65,12 @@ nav .btn{min-height:44px;padding:0 20px;font-size:15px;white-space:nowrap}
 .hero{padding:clamp(28px,4vw,48px) 0 clamp(64px,8vw,96px)}
 .hero .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:40px}
 .hero .txt{grid-column:1/7;display:flex;flex-direction:column;justify-content:center;gap:28px}
-.pill{align-self:flex-start;max-width:100%;border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600}
+.pill{align-self:flex-start;max-width:100%;display:inline-flex;align-items:center;gap:10px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:7px 16px 7px 12px;font-size:14px;font-weight:500;color:var(--ink2)}
+.pill b{color:var(--ink);font-weight:700}
+a.pill{text-decoration:none;transition:border-color .2s}a.pill:hover{border-color:var(--or)}
+.pill .dot{position:relative;width:9px;height:9px;border-radius:50%;background:var(--or);flex:none}
+@media (prefers-reduced-motion:no-preference){.pill .dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--or);animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}}
+@keyframes ping{75%,100%{transform:scale(2.4);opacity:0}}
 .hero h1{font-size:clamp(48px,7vw,92px);line-height:.92;letter-spacing:-.05em}
 .lead{font-size:clamp(17px,1.4vw,19px);color:var(--ink2);max-width:30em}
 .act{display:flex;flex-wrap:wrap;gap:12px}
@@ -326,7 +331,7 @@ footer .r{margin-left:auto}
 
 <header class="hero" id="topo"><div class="wrap">
   <div class="txt rv">
-    <span class="pill">Sites para pequenas empresas · Juiz de Fora e todo o Brasil</span>
+    <a class="pill" href="#contato"><span class="dot" aria-hidden="true"></span><span><b>Orçamento grátis</b> e sem compromisso</span></a>
     <h1>Seu site trabalhando <span class="hl">enquanto você atende.</span></h1>
     <p class="lead">Landing pages e sites que transformam visita em pedido de orçamento. Cada contato chega organizado, direto no seu painel e no seu WhatsApp.</p>
     <div class="act">
