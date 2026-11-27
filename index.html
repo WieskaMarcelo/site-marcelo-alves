@@ -116,7 +116,7 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;
 <body>
 <nav><div class="wrap">
   <a class="logo" href="#topo"><i></i>Marcelo Alves</a>
-  <div class="links"><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#como">Como funciona</a><a href="#portfolio">Portfólio</a><a href="#planos">Planos</a><a href="#contato">Contato</a></div>
+  <div class="links"><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#como">Como funciona</a><a href="#planos">Planos</a><a href="#contato">Contato</a></div>
   <a class="btn solid" href="#contato">Pedir orçamento</a>
 </div></nav>
 
@@ -165,12 +165,6 @@ footer .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;
   <h2>Como funciona</h2>
   <p class="lead">Um processo simples, sem complicação técnica do seu lado.</p>
   <ol class="steps" id="stp"></ol>
-</div></section>
-
-<section class="band alt" id="portfolio"><div class="wrap">
-  <h2>Portfólio</h2>
-  <p class="lead">Projetos próprios em andamento. Os sites de clientes entram aqui conforme forem entregues.</p>
-  <div class="port" id="prt"></div>
 </div></section>
 
 <section class="band" id="planos"><div class="wrap">
@@ -255,8 +249,6 @@ const stp = [
 document.getElementById("stp").innerHTML = stp.map(([t,d],i) =>
   `<li><span class="n">${i+1}</span><h3>${t}</h3><p>${d}</p></li>`).join("");
 
-document.getElementById("prt").innerHTML = [["Sistema Financeiro Hospitalar","Controle financeiro pensado para a rotina de hospitais e clínicas."],["CRM Odontológico","Plataforma SaaS para clínicas organizarem pacientes, agenda e relacionamento."],["PetWalk","Plataforma que conecta donos de pets a passeadores."]].map(([p,d]) =>
-  `<article class="shot"><div class="bar"><i></i><i></i><i></i></div><div class="pv">Imagem do projeto</div><div class="cap"><h3>${p}</h3><p>${d}</p><span class="soon" style="margin-top:10px;display:inline-block">Em desenvolvimento</span></div></article>`).join("");
 
 const prc = [
   ["Essencial","Sob consulta","Para quem precisa marcar presença rápido.",["Landing page de uma página","Botão de WhatsApp","Adaptado para celular","Entrega rápida"]],
