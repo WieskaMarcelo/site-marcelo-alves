@@ -291,7 +291,7 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
 <pre><span class="c">// lead chegou pelo site</span>
 <span class="k">export async function</span> <span class="f">novoLead</span>(dados) {
   <span class="k">const</span> lead = <span class="k">await</span> db.<span class="f">insert</span>(<span class="s">"leads"</span>, dados);
-  <span class="k">await</span> whatsapp.<span class="f">avisar</span>(lead);
+  <span class="k">await</span> painel.<span class="f">avisar</span>(lead);
   <span class="k">return</span> { status: <span class="s">"novo"</span> };
 }
 
@@ -345,9 +345,8 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
   <div>
     <div class="kicker">CONTATO</div>
     <h2>Conte sua ideia e receba uma proposta</h2>
-    <p class="muted" style="margin-top:14px">Preencha o formulário: ele abre o WhatsApp com sua mensagem pronta e eu respondo o quanto antes.</p>
+    <p class="muted" style="margin-top:14px">Preencha o formulário com sua ideia. Eu analiso e retorno com a proposta o quanto antes.</p>
     <div class="cinfo">
-      <a href="#" id="waContact"><svg><use href="#wa"/></svg>(32) 99828-2452</a>
       <a href="mailto:marceloalvesjf@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>marceloalvesjf@gmail.com</a>
       <a href="https://www.instagram.com/alvesmm__/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>@alvesmm__</a>
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Juiz de Fora, MG e todo o Brasil, online</div>
@@ -370,8 +369,8 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
 <div class="wrap">
   <div class="cta">
     <svg class="rk" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round" aria-hidden="true"><path d="M38 8c10 0 18 8 18 18-6 6-14 12-22 16l-12-12C26 22 32 14 38 8z"/><circle cx="41" cy="23" r="4"/><path d="M22 30l-10 2-4 8 12-2M34 42l-2 10-8 4 2-12M18 46c-4 0-8 4-8 8 4 0 8-4 8-8z"/></svg>
-    <div class="t"><h2>Vamos tirar seu projeto do papel?</h2><p>Fale agora e receba um orçamento sem compromisso.</p></div>
-    <div class="ctas"><a class="btn wa" id="waCta" href="#"><span class="bi ring"><svg class="ba"><use href="#arrow"/></svg></span><i class="sep"></i><span class="bl">Falar no WhatsApp</span><svg class="wal"><use href="#wa"/></svg></a><a class="btn out" href="#contato"><span class="bl">Solicitar orçamento</span><svg class="ba"><use href="#arrow"/></svg></a></div>
+    <div class="t"><h2>Vamos tirar seu projeto do papel?</h2><p>Preencha o formulário e receba um orçamento sem compromisso.</p></div>
+    <div class="ctas"><a class="btn pri" href="#contato"><span class="bi"><svg><use href="#rocket"/></svg></span><i class="sep"></i><span class="bl">Solicitar orçamento</span><svg class="ba"><use href="#arrow"/></svg></a><a class="btn out" href="#planos"><span class="bl">Ver planos</span><svg class="ba"><use href="#arrow"/></svg></a></div>
   </div>
 </div>
 
@@ -379,7 +378,7 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
   <div class="row">
     <a class="brand" href="#topo"><svg><use href="#logo"/></svg><span><b>Marcelo Alves</b><small>SOLUÇÕES DIGITAIS</small></span></a>
     <div class="fl"><a href="#topo">Home</a><a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#planos">Planos</a><a href="#contato">Contato</a></div>
-    <div class="fc"><a href="#" id="waFoot"><svg style="color:#25d366"><use href="#wa"/></svg>(32) 99828-2452</a><a href="mailto:marceloalvesjf@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="#4f8bff" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>marceloalvesjf@gmail.com</a></div>
+    <div class="fc"><a href="mailto:marceloalvesjf@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="#4f8bff" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>marceloalvesjf@gmail.com</a></div>
     <div class="soc">
       <a href="https://www.instagram.com/alvesmm__/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
     </div>
@@ -387,16 +386,11 @@ footer .bt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;bo
   <div class="bt"><span>© 2026 Marcelo Alves. Todos os direitos reservados.</span><span>Inovação · Tecnologia · Resultados</span></div>
 </div></footer>
 
-<a class="fab" id="waFab" href="#" aria-label="Falar no WhatsApp"><svg><use href="#wa"/></svg></a>
 
 <script src="config.js"></script>
 <script>
 {
 const $ = id => document.getElementById(id);
-const WA = "5532998282452";
-const waLink = t => "https://wa.me/" + WA + "?text=" + encodeURIComponent(t);
-const hi = "Olá! Vi seu site e quero um orçamento.";
-for (const id of ["waContact","waFab","waCta","waFoot"]) { const a = $(id); a.href = waLink(hi); a.target = "_blank"; a.rel = "noopener"; }
 
 // ondas de luz do hero
 $("wl").innerHTML = Array.from({length:14}, (_, i) => {
@@ -470,16 +464,17 @@ const navLinks = [...document.querySelectorAll("#links a")];
 const spy = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) navLinks.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id)); }), {rootMargin:"-45% 0px -50% 0px"});
 ["topo","servicos","planos","sobre","contato"].forEach(id => spy.observe($(id)));
 
-// Salva o lead no Supabase quando config.js estiver preenchido. Falha aqui nunca bloqueia o WhatsApp.
+// Salva o lead no Supabase (config.js).
 function saveLead(lead) {
   const c = window.SITE_CONFIG || {};
-  if (!c.supabaseUrl || !c.supabaseAnonKey || $("fh").value) return;
+  if ($("fh").value) return Promise.resolve(true);
+  if (!c.supabaseUrl || !c.supabaseAnonKey) return Promise.resolve(false);
   const body = { nome:lead.nome, whatsapp:lead.whatsapp, email:lead.email||null, negocio:lead.negocio||null, tipo:lead.tipo, investimento:lead.investimento, prazo:lead.prazo, mensagem:lead.mensagem||null, origem:lead.origem };
-  fetch(c.supabaseUrl.replace(/\/$/,"") + "/rest/v1/leads", {
+  return fetch(c.supabaseUrl.replace(/\/$/,"") + "/rest/v1/leads", {
     method:"POST", keepalive:true,
     headers:{ "Content-Type":"application/json", apikey:c.supabaseAnonKey, Prefer:"return=minimal" },
     body: JSON.stringify(body)
-  }).catch(() => {});
+  }).then(r => r.ok).catch(() => false);
 }
 
 $("f").addEventListener("submit", e => {
@@ -489,10 +484,13 @@ $("f").addEventListener("submit", e => {
   if (!v("fn")) { ok.textContent = "Preencha seu nome para continuar."; $("fn").focus(); return; }
   if (v("fp").replace(/\D/g,"").length < 10) { ok.textContent = "Informe um WhatsApp com DDD."; $("fp").focus(); return; }
   const lead = { nome:v("fn",120), whatsapp:v("fp",25), email:v("fe"), negocio:v("fb"), tipo:v("ft"), investimento:v("fv"), prazo:v("fd"), mensagem:v("fm",2000), origem:"site" };
-  const t = `Olá! Meu nome é ${lead.nome}.\nWhatsApp: ${lead.whatsapp}${lead.email?"\nE-mail: "+lead.email:""}\nNegócio: ${lead.negocio || "-"}\nPreciso de: ${lead.tipo}\nInvestimento: ${lead.investimento}\nPrazo: ${lead.prazo}\n${lead.mensagem}`;
-  const a = document.createElement("a"); a.href = waLink(t); a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove();
-  ok.textContent = "Abrindo o WhatsApp com sua mensagem pronta.";
-  saveLead(lead);
+  const btn = $("f").querySelector("button[type=submit]");
+  btn.disabled = true; ok.textContent = "Enviando seu pedido...";
+  saveLead(lead).then(sent => {
+    btn.disabled = false;
+    if (sent) { $("f").reset(); ok.textContent = "Pedido enviado! Obrigado, " + lead.nome.split(" ")[0] + ". Vou analisar e entro em contato em breve."; }
+    else ok.textContent = "Não consegui enviar agora. Tente de novo em instantes ou mande um e-mail para marceloalvesjf@gmail.com.";
+  });
 });
 }
 </script>
